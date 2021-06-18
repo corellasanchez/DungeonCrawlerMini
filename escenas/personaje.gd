@@ -43,19 +43,20 @@ func establecer_orientacion():
 		orientacion = 'derecha'
 		animacion.scale.x = 1
 		animacion.play("caminarLado")
+		return 
 	if 	Input.is_action_pressed("ui_left") :
 		orientacion = 'izquierda'
 		animacion.scale.x = -1
 		animacion.play("caminarLado")
+		return
 	if 	Input.is_action_pressed("ui_up") :
 		orientacion = 'arriba'
 		animacion.play("caminarArriba")
+		return
 	if 	Input.is_action_pressed("ui_down") :
 		orientacion = 'abajo'
 		animacion.play("caminarAbajo")
-		if (Input.is_action_pressed("ui_left")) :
-			animacion.play("caminarAbajo")
-			return true
+		return
 
 	#descanso
 	if Input.is_action_just_released("ui_right") :
