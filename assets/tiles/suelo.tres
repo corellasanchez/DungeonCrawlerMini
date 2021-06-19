@@ -2233,24 +2233,24 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 159/shape_one_way_margin = 0.0
 159/shapes = [  ]
 159/z_index = 0
-163/name = "agua"
-163/texture = ExtResource( 2 )
-163/tex_offset = Vector2( 0, 0 )
-163/modulate = Color( 1, 1, 1, 1 )
-163/region = Rect2( 0, 0, 16, 16 )
-163/tile_mode = 0
-163/occluder_offset = Vector2( 0, 0 )
-163/navigation_offset = Vector2( 0, 0 )
-163/shape_offset = Vector2( 0, 0 )
-163/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-163/shape = SubResource( 1 )
-163/shape_one_way = false
-163/shape_one_way_margin = 1.0
-163/shapes = [ {
+160/name = "agua colision"
+160/texture = ExtResource( 2 )
+160/tex_offset = Vector2( 0, 0 )
+160/modulate = Color( 1, 1, 1, 1 )
+160/region = Rect2( 0, 0, 16, 16 )
+160/tile_mode = 0
+160/occluder_offset = Vector2( 0, 0 )
+160/navigation_offset = Vector2( 0, 0 )
+160/shape_offset = Vector2( 0, 0 )
+160/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+160/shape = SubResource( 1 )
+160/shape_one_way = false
+160/shape_one_way_margin = 1.0
+160/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
 "shape": SubResource( 1 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
-163/z_index = 0
+160/z_index = 0
