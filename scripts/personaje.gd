@@ -33,8 +33,8 @@ func aplicar_friccion(cantidad):
 	else:
 		movimiento = Vector2.ZERO
 		
-func mover(aceleracion):
-	movimiento += aceleracion
+func mover(aceleracionTotal):
+	movimiento += aceleracionTotal
 	movimiento = movimiento.clamped(velocidad_maxima)	
 
 func establecer_orientacion():
