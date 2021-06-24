@@ -17,7 +17,7 @@ script = ExtResource( 2 )
 [node name="textura" type="Sprite" parent="."]
 position = Vector2( 0, -2.35355 )
 texture = ExtResource( 1 )
-hframes = 3
+hframes = 4
 
 [node name="cerradura" type="StaticBody2D" parent="."]
 collision_layer = 2

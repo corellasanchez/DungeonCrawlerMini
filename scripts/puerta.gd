@@ -13,19 +13,21 @@ var objetoInteractuable
 var estados = [
 	{"nombre": "cerrada", "frame": 0},
 	{"nombre": "abierta", "frame": 2},
-	{"nombre": "bloqueada", "frame": 1}
+	{"nombre": "bloqueada", "frame": 1},
+	{"nombre": "bloqueada-magicamente", "frame": 3},
 ]
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
+	# textura, estados posibles, estado por defecto
 	objetoInteractuable = claseInteractuable.new(textura,estados,estadoPorDefecto)
-	if (estadoPorDefecto != "bloqueada" ):
+	if (estadoPorDefecto != "bloqueada" && objetoInteractuable.estadoActual != "bloqueada-magicamente"):
 		cerradura.disabled = true
 	else:
 		cerradura.disabled = false
-	
+
+# El jugador toca la puerta
 func _on_puerta_body_entered(body):
-	if (objetoInteractuable.estadoActual != "bloqueada" ):
+	if (objetoInteractuable.estadoActual != "bloqueada" && objetoInteractuable.estadoActual != "bloqueada-magicamente"):
 		cerradura.disabled = true
 		objetoInteractuable.establecerEstado("abierta")
 	else:
