@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="DungeonCrawlerMini"
-run/main_scene="res://escenas/escena.tscn"
+run/main_scene="res://scripts/escena.tscn"
 config/icon="res://icon.png"
 
 [display]
@@ -39,6 +39,10 @@ window/stretch/aspect="keep"
 2d_physics/layer_2="entorno"
 2d_physics/layer_3="enemigos"
 2d_physics/layer_4="items"
+
+[locale]
+
+translations=PoolStringArray( "res://idiomas/translation.es.translation", "res://idiomas/translation.de.translation", "res://idiomas/translation.fr.translation", "res://idiomas/translation.en.translation" )
 
 [physics]
 
