@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="DungeonCrawlerMini"
-run/main_scene="res://scripts/escena.tscn"
+run/main_scene="res://escenas/escena.tscn"
 config/icon="res://icon.png"
 
 [display]

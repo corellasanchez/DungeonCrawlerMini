@@ -8,6 +8,9 @@ var textura
 # Estados disponibles
 var estados = []
 
+# Abre el cuadro de dialogos de mensajes
+signal mostrar_mensaje
+
 # Constructor
 func _init(nodoTextura, estadosDisponibles, estadoPorDefecto):
 	textura = nodoTextura
@@ -20,3 +23,7 @@ func establecerEstado(nombre: String):
 		if(estados[i].nombre == nombre):
 			estadoActual = estados[i].nombre
 			textura.frame = estados[i].frame
+
+#
+func enviar_mensaje(mensaje):
+	 emit_signal("mostrar_mensaje", mensaje)
