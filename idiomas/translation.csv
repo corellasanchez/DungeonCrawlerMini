@@ -2,8 +2,8 @@
 saludo,"Hola","Hello ",Bonjour,Hallo
 puerta_bloqueada,"Esta puerta necesita una llave para abrirse.",This door needs a key to open.,Cette porte a besoin d'une clé pour s'ouvrir.,Diese Tür braucht einen Schlüssel zum Öffnen.
 puerta_bloqueada_magicamente,"Esta puerta se abre desde otra parte.",This door opens from elsewhere.,Cette porte s'ouvre d'ailleurs.,Diese Tür öffnet sich von woanders.
-,,,,
-,,,,
+pv,"PV",HP,PV,
+pm,"PM",MP,PM,MP
 ,,,,
 ,,,,
 ,,,,
