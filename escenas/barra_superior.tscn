@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://escenas/barra_magia.tscn" type="PackedScene" id=1]
+[ext_resource path="res://escenas/barra_vida.tscn" type="PackedScene" id=2]
+[ext_resource path="res://escenas/contador_llaves.tscn" type="PackedScene" id=3]
+[ext_resource path="res://escenas/contador_llaves_calabozo.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/ui/contenedores/azul.png" type="Texture" id=5]
+
+[node name="barra_superior" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+margin_bottom = 15.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Control"]
+margin_right = 325.0
+margin_bottom = 18.0
+rect_scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 5 )
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="barra_vida" parent="Control/NinePatchRect" instance=ExtResource( 2 )]
+margin_left = 9.00561
+margin_top = 0.525561
+margin_right = 137.006
+margin_bottom = 16.5256
+
+[node name="barra_magia" parent="Control/NinePatchRect" instance=ExtResource( 1 )]
+margin_left = 142.657
+margin_top = 0.923338
+margin_right = 270.657
+margin_bottom = 16.9233
+
+[node name="contador_llaves" parent="Control/NinePatchRect" instance=ExtResource( 3 )]
+margin_left = 275.867
+margin_top = 0.52556
+margin_right = 297.867
+margin_bottom = 16.5256
+
+[node name="contador_llaves_calabozo" parent="Control/NinePatchRect" instance=ExtResource( 4 )]
+margin_left = 298.907
+margin_top = 0.52556
+margin_right = 320.907
+margin_bottom = 16.5256
