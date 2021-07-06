@@ -1,13 +1,30 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/ui/contadores/llaves.png" type="Texture" id=1]
 [ext_resource path="res://fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://scripts/contador_llaves.gd" type="Script" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 7
 font_data = ExtResource( 2 )
 
+[sub_resource type="Animation" id=2]
+resource_name = "cambio"
+tracks/0/type = "value"
+tracks/0/path = NodePath("NinePatchRect/icono:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 0.176777, 2 ),
+"update": 0,
+"values": [ Vector2( 0.6, 0.6 ), Vector2( 4, 4 ), Vector2( 0.6, 0.6 ) ]
+}
+
 [node name="contador_llaves" type="HBoxContainer"]
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -17,13 +34,13 @@ margin_right = 22.0
 margin_bottom = 15.0
 rect_min_size = Vector2( 22, 15 )
 
-[node name="Sprite" type="Sprite" parent="NinePatchRect"]
+[node name="icono" type="Sprite" parent="NinePatchRect"]
 position = Vector2( 6, 7 )
 scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 1 )
 hframes = 2
 
-[node name="Label" type="Label" parent="NinePatchRect"]
+[node name="llaves" type="Label" parent="NinePatchRect"]
 anchor_left = 0.03125
 anchor_top = -0.03125
 anchor_right = 0.03125
@@ -34,7 +51,10 @@ margin_right = 27.0625
 margin_bottom = 16.1125
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "1"
+text = "0"
 __meta__ = {
 "_edit_use_anchors_": true
 }
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/cambio = SubResource( 2 )
