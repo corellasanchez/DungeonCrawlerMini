@@ -15,7 +15,7 @@ func _ready():
 	vida_max = 100
 	magia = 100
 	magia_max = 100
-	llaves = 0 
+	llaves = 1 
 	llaves_calabozo = 0
 	texto_dialogo = ''
 

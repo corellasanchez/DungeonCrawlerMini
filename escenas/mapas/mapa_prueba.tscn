@@ -81,7 +81,6 @@ tile_data = PoolIntArray( 393227, 0, 0, 393233, 0, 0, 524301, 86, 0, 524303, 86,
 
 [node name="puerta" parent="." instance=ExtResource( 3 )]
 position = Vector2( 232.485, 200.933 )
-estadoPorDefecto = "puerta_bloqueada"
 
 [node name="fogata" parent="." instance=ExtResource( 2 )]
 position = Vector2( 48.0833, 107.48 )
