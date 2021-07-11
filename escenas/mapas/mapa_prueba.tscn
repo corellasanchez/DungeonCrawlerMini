@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/tiles/agua/agua.tres" type="Texture" id=1]
 [ext_resource path="res://escenas/objetos/fogata.tscn" type="PackedScene" id=2]
 [ext_resource path="res://escenas/objetos/puerta.tscn" type="PackedScene" id=3]
 [ext_resource path="res://escenas/objetos/personaje.tscn" type="PackedScene" id=4]
 [ext_resource path="res://escenas/ui/main_ui.tscn" type="PackedScene" id=5]
+[ext_resource path="res://escenas/objetos/cofre.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/tiles/suelo.tres" type="TileSet" id=7]
 [ext_resource path="res://assets/tiles/props.tres" type="TileSet" id=8]
 [ext_resource path="res://scripts/escena.gd" type="Script" id=9]
@@ -77,13 +78,16 @@ show_collision = true
 collision_layer = 3
 collision_mask = 3
 format = 1
-tile_data = PoolIntArray( 393227, 0, 0, 393233, 0, 0, 524301, 86, 0, 524303, 86, 0, 589837, 24, 0, 589838, 16, 0, 589839, 26, 0, 655373, 18, 0, 655374, 85, 0, 655375, 20, 0, 720909, 32, 0, 720910, 33, 0, 720911, 34, 0, 786443, 0, 0, 786445, 86, 0, 786447, 86, 0, 786449, 1, 0 )
+tile_data = PoolIntArray( 393227, 0, 0, 393233, 0, 0, 524301, 86, 0, 524303, 86, 0, 589837, 24, 0, 589838, 16, 0, 589839, 26, 0, 655373, 18, 0, 655374, 19, 0, 655375, 20, 0, 720909, 32, 0, 720910, 33, 0, 720911, 34, 0, 786443, 0, 0, 786445, 86, 0, 786447, 86, 0, 786449, 1, 0 )
 
 [node name="puerta" parent="." instance=ExtResource( 3 )]
 position = Vector2( 232.485, 200.933 )
 
 [node name="fogata" parent="." instance=ExtResource( 2 )]
 position = Vector2( 48.0833, 107.48 )
+
+[node name="cofre" parent="." instance=ExtResource( 6 )]
+position = Vector2( 232.5, 168.646 )
 
 [node name="personaje" parent="." instance=ExtResource( 4 )]
 position = Vector2( 87.432, 98.1107 )

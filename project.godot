@@ -10,11 +10,17 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node",
+"class": "RNGTools",
+"language": "GDScript",
+"path": "res://scripts/librerias/RNGTools.gd"
+}, {
+"base": "Node",
 "class": "objetoInteractuable",
 "language": "GDScript",
 "path": "res://scripts/objetoInteractuable.gd"
 } ]
 _global_script_class_icons={
+"RNGTools": "",
 "objetoInteractuable": ""
 }
 
@@ -27,6 +33,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Globales="*res://scripts/variables_globales.gd"
+RngTools="*res://scripts/librerias/RNGTools.gd"
 
 [display]
 

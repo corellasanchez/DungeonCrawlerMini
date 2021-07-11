@@ -1,0 +1,92 @@
+RNGTools
+========
+
+Extra random number generation tools for [Godot
+Engine](https://godotengine.org)
+
+Features
+--------
+
+-   Shuffle arrays
+-   Pick from a set of weighted options easily
+-   Random other convenience functions for the lazy
+-   All functions have an optional RandomNumberGenerator argument, if
+    you want to use your own RNG sequence
+
+Documentation
+-------------
+
+### `randi_range(from: int, to: int, rng=null) -> int`
+
+Generates a random integer between `from` (inclusive) and `to`
+(exclusive). `from` does not need to be less than `to`. If they are the
+same, the number is returned.
+
+``` {.gdscript}
+RNGTools.randi_range(-10, 10)
+# -3
+```
+
+### `pick(array: Array, rng=null) -> Variant`
+
+Picks one element of the array at random, or null if the array is empty.
+
+``` {.gdscript}
+RNGTools.pick(["A", "B", "C", "D", "E"])
+# "C"
+```
+
+### `shuffle(array: Array, rng=null) -> void`
+
+Shuffles an array in-place.
+
+``` {.gdscript}
+var array = range(10)
+RNGTools.shuffle(array)
+# [2, 7, 0, 5, 8, 6, 4, 9, 1, 3]
+```
+
+### `pick_weighted(bag: RNGTools.WeightedBag, rng=null) -> Variant`
+
+Picks an item at random from an `RNGTools.WeightedBag`.
+
+``` {.gdscript}
+var bag := RNGTools.WeightedBag.new()
+bag.weights = {
+    A = 1,
+    B = 2,
+    C = 3
+}
+
+RNGTools.pick_weighted(bag)
+# "B"
+```
+
+### `class RNGTools.WeightedBag`
+
+A "bag" of values, each with a weight that determines its rarity.
+
+Higher weights are more common; lower weights are more rare. For
+example, an item with weight 2 is picked roughly twice as often as an
+item with weight 1.
+
+Use `RNGTools.pick_weighted()` to pick elements from the bag.
+
+### `WeightedBag.weights: Dictionary`
+
+A map of elements to their weights. Weights must be integers.
+
+Contributing
+------------
+
+Got a favorite RNG-related utility function sitting around in your
+project? I'd love to include it here! Just file an issue or a pull
+request. Remember that all submitted code must be MIT licensed.
+
+Likewise, if you've found a bug, please file an issue or PR.
+
+License
+-------
+
+Licensed under the MIT License. See
+[`addons/rngtools/LICENSE.md`](https://gitlab.com/jwestman/rngtools/-/blob/master/addons/rngtools/LICENSE.md).

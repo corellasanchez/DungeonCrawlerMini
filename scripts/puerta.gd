@@ -4,7 +4,7 @@ onready var cerradura = get_node("cerradura/CollisionShape2D")
 onready var colision_puerta = get_node("CollisionShape2D")
 
 # clase interactuable
-const claseInteractuable = preload("res://scripts/objetoInteractuable.gd")
+var claseInteractuable = preload("res://scripts/objetoInteractuable.gd")
 
 export var estadoPorDefecto = "puerta_bloqueada"
 onready var textura = get_node("textura")
@@ -31,7 +31,6 @@ func _ready():
 
 # El jugador toca la puerta
 func _on_puerta_body_entered(_body):
-	print(objetoInteractuable.estadoActual)
 	if (objetoInteractuable.estadoActual != "puerta_bloqueada" && objetoInteractuable.estadoActual != "puerta_bloqueada_magicamente"):
 		abrir_puerta()
 	else:

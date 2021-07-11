@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scripts/cofre.gd" type="Script" id=1]
+[ext_resource path="res://assets/tiles/cofres/cofres.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 7.36028, 0.987579 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 3.47119, 8.15423 )
+
+[node name="cofre" type="Area2D"]
+position = Vector2( 0, -0.353554 )
+collision_layer = 2
+script = ExtResource( 1 )
+
+[node name="textura" type="Sprite" parent="."]
+position = Vector2( 0, -2.35355 )
+texture = ExtResource( 2 )
+hframes = 6
+
+[node name="cerradura" type="StaticBody2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cerradura"]
+position = Vector2( 0.226379, -4.94975 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.373398, -2.12132 )
+shape = SubResource( 2 )
+
+[connection signal="body_entered" from="." to="." method="_on_cofre_body_entered"]
