@@ -51,6 +51,8 @@ func _on_puerta_body_exited(_body):
 		emit_signal("ocultarMensaje")
 	Globales.vida -= 10
 	Globales.magia -= 10
+	Globales.monedas = 0
+	Globales.monedas = 10
 	#Globales.llaves += 1
 	#Globales.llaves_calabozo += 1
 
