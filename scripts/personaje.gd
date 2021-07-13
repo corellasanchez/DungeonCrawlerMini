@@ -6,7 +6,8 @@ onready var animacion = get_node("animacion")
 var velocidad_maxima = 75
 var aceleracion = 600
 var movimiento = Vector2.ZERO
-var orientacion = 'derecha'
+var orientacion = 'abajo'
+var estaAtacando = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -38,33 +39,61 @@ func mover(aceleracionTotal):
 	movimiento = movimiento.clamped(velocidad_maxima)	
 
 func establecer_orientacion():
-	#caminar
-	if 	Input.is_action_pressed("ui_right") :
-		orientacion = 'derecha'
-		animacion.scale.x = 1
-		animacion.play("caminarLado")
-		return 
-	if 	Input.is_action_pressed("ui_left") :
-		orientacion = 'izquierda'
-		animacion.scale.x = -1
-		animacion.play("caminarLado")
+	
+	if Input.is_action_just_pressed("atacar"):
+		establecerAnimacionAtaque()
 		return
-	if 	Input.is_action_pressed("ui_up") :
-		orientacion = 'arriba'
-		animacion.play("caminarArriba")
-		return
-	if 	Input.is_action_pressed("ui_down") :
-		orientacion = 'abajo'
-		animacion.play("caminarAbajo")
-		return
+	
+	if (estaAtacando == false):
+		#caminar
+		if 	Input.is_action_pressed("ui_right") :
+			orientacion = 'derecha'
+			animacion.scale.x = 1
+			animacion.play("caminarLado")
+			return 
+		if 	Input.is_action_pressed("ui_left") :
+			orientacion = 'izquierda'
+			animacion.scale.x = -1
+			animacion.play("caminarLado")
+			return
+		if 	Input.is_action_pressed("ui_up") :
+			orientacion = 'arriba'
+			animacion.play("caminarArriba")
+			return
+		if 	Input.is_action_pressed("ui_down") :
+			orientacion = 'abajo'
+			animacion.play("caminarAbajo")
+			return
 
-	#descanso
-	if Input.is_action_just_released("ui_right") :
+		#descanso
+		if Input.is_action_just_released("ui_right") :
+			animacion.play("descansoLado")
+		if Input.is_action_just_released("ui_left") :
+			animacion.play("descansoLado")
+		if Input.is_action_just_released("ui_up") :
+			animacion.play("descansoArriba")
+		if Input.is_action_just_released("ui_down") :
+			animacion.play("descansoAbajo")
+
+
+func _on_animacion_animation_finished():
+	estaAtacando = false
+	if(animacion.animation == "atacarLado"):
 		animacion.play("descansoLado")
-	if Input.is_action_just_released("ui_left") :
-		animacion.play("descansoLado")
-	if Input.is_action_just_released("ui_up") :
+	if(animacion.animation == "atacarArriba"):
 		animacion.play("descansoArriba")
-	if Input.is_action_just_released("ui_down") :
+	if(animacion.animation == "atacarAbajo"):
 		animacion.play("descansoAbajo")
-		
+
+func establecerAnimacionAtaque():
+	estaAtacando = true
+	if(orientacion == "derecha"):
+		animacion.scale.x = 1
+		animacion.play("atacarLado")
+	if(orientacion == "izquierda"):
+		animacion.scale.x = -1
+		animacion.play("atacarLado")
+	if(orientacion == "arriba"):
+		animacion.play("atacarArriba")
+	if(orientacion == "abajo"):
+		animacion.play("atacarAbajo")
