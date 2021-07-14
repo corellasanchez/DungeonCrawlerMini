@@ -14,3 +14,7 @@ https://ahninniah.itch.io/
 
 Ric Pixelarium sprites
 https://ric-gamedev.itch.io/
+
+Enemies 
+https://elthen.itch.io/2d-pixel-art-crab-sprites
+Elthen's pixel art shop
