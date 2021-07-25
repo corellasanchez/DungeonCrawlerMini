@@ -4,6 +4,9 @@ var velocidad = 20;
 onready var ruta = $Path2D/PathFollow2D
 onready var animacion = $Path2D/PathFollow2D/KinematicBody2D/animacion
 var direccion = "derecha"
+var estado = "patrullar"
+var jugador
+var velocity = Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -11,7 +14,12 @@ func _ready():
 	
 
 func _physics_process(delta):
-	patrullar(delta)
+	
+	if(estado == "patrullar"):
+		patrullar(delta)
+		return
+	if(estado == "alerta"):
+		alerta(delta)
 	
 func patrullar(delta):
 	if direccion == "derecha" :
@@ -35,11 +43,16 @@ func patrullar(delta):
 				animacion.play("caminar")
 			ruta.offset -= velocidad * delta
 
-		
-		
-		
-	
-	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func alerta(delta):
+	pass
+
+
+func _on_area_alerta_body_entered(body):
+	if (body.name == "personaje"):
+		jugador = body
+		estado = "alerta"
+
+
+func _on_area_alerta_body_exited(body):
+	if (body.name == "personaje"):
+		estado = "normal"

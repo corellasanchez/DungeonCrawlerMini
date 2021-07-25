@@ -1,12 +1,7 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://assets/tiles/enemigos/cangrejo/cangrejo.png" type="Texture" id=1]
-[ext_resource path="res://scripts/cangrejin.gd" type="Script" id=2]
-
-[sub_resource type="Curve2D" id=1]
-_data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 13.6271, -8.47809, 0, 0, 0, 0, 68.0333, -8.62674 )
-}
+[ext_resource path="res://scripts/cangrejo.gd" type="Script" id=2]
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 1 )
@@ -95,55 +90,41 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=19]
-extents = Vector2( 8.58781, 5.02693 )
+[sub_resource type="CircleShape2D" id=21]
+radius = 7.19374
 
 [sub_resource type="CircleShape2D" id=20]
-radius = 59.6055
+radius = 44.9438
 
-[node name="cangrejin" type="Node2D"]
-position = Vector2( -0.44545, -0.222725 )
+[node name="cangrejo" type="KinematicBody2D"]
+position = Vector2( -0.222717, -10.2453 )
+collision_layer = 4
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Path2D" type="Path2D" parent="."]
-curve = SubResource( 1 )
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2( 13.6271, -8.47809 )
-rotation = -0.00273228
-rotate = false
-loop = false
-
-[node name="KinematicBody2D" type="KinematicBody2D" parent="Path2D/PathFollow2D"]
-position = Vector2( -0.182579, -10.2524 )
-rotation = 0.00347225
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="animacion" type="AnimatedSprite" parent="Path2D/PathFollow2D/KinematicBody2D"]
+[node name="animacion" type="AnimatedSprite" parent="."]
 position = Vector2( 1.90735e-06, -0.198423 )
 frames = SubResource( 18 )
 animation = "espera"
-frame = 2
 speed_scale = 1.1
+playing = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/KinematicBody2D"]
-position = Vector2( 1.90735e-06, 10.1021 )
-shape = SubResource( 19 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.222723, 11.6612 )
+rotation = -1.32545
+shape = SubResource( 21 )
 
-[node name="area_alerta" type="Area2D" parent="Path2D/PathFollow2D/KinematicBody2D"]
-position = Vector2( -13.4026, 18.7399 )
-rotation = -0.00073997
-scale = Vector2( 1, 1 )
+[node name="Area2D" type="Area2D" parent="."]
 collision_layer = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/KinematicBody2D/area_alerta"]
-position = Vector2( 13.5862, -7.57264 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 0, 10.0226 )
 shape = SubResource( 20 )
 
-[connection signal="body_entered" from="Path2D/PathFollow2D/KinematicBody2D/area_alerta" to="." method="_on_area_alerta_body_entered"]
-[connection signal="body_exited" from="Path2D/PathFollow2D/KinematicBody2D/area_alerta" to="." method="_on_area_alerta_body_exited"]
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="ready" from="." to="." method="_on_cangrejo_ready"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
