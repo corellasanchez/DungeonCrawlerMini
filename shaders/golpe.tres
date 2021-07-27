@@ -1,0 +1,18 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform vec4 color : hint_color = vec4(1.0, 1.0, 1.0, 1.0);
+uniform float intensidad_golpe : hint_range(0.0,1.0) = 0.0;
+
+void fragment() {
+	vec4 custom_color = texture(TEXTURE, UV);
+	custom_color.rgb = mix(custom_color.rgb, color.rgb, intensidad_golpe);
+	COLOR = custom_color;
+}"
+
+[resource]
+shader = SubResource( 1 )
+shader_param/color = Color( 1, 0, 0, 1 )
+shader_param/intensidad_golpe = 0.0

@@ -26,51 +26,51 @@ region = Rect2( 96, 32, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 32, 32 )
+region = Rect2( 0, 96, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 1 )
-region = Rect2( 32, 0, 32, 32 )
+region = Rect2( 32, 96, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 1 )
-region = Rect2( 64, 0, 32, 32 )
+region = Rect2( 64, 96, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 1 )
-region = Rect2( 96, 0, 32, 32 )
+region = Rect2( 96, 96, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 1 )
-region = Rect2( 0, 96, 32, 32 )
+region = Rect2( 0, 64, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 1 )
-region = Rect2( 32, 96, 32, 32 )
+region = Rect2( 32, 64, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 1 )
-region = Rect2( 64, 96, 32, 32 )
+region = Rect2( 64, 64, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 1 )
-region = Rect2( 96, 96, 32, 32 )
+region = Rect2( 96, 64, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=14]
 atlas = ExtResource( 1 )
-region = Rect2( 0, 64, 32, 32 )
+region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=15]
 atlas = ExtResource( 1 )
-region = Rect2( 32, 64, 32, 32 )
+region = Rect2( 32, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=16]
 atlas = ExtResource( 1 )
-region = Rect2( 64, 64, 32, 32 )
+region = Rect2( 64, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=17]
 atlas = ExtResource( 1 )
-region = Rect2( 96, 64, 32, 32 )
+region = Rect2( 96, 0, 32, 32 )
 
 [sub_resource type="SpriteFrames" id=18]
 animations = [ {
@@ -81,17 +81,17 @@ animations = [ {
 }, {
 "frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ) ],
 "loop": true,
-"name": "espera",
+"name": "atacar",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
 "loop": true,
-"name": "atacar",
+"name": "morir",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ) ],
 "loop": true,
-"name": "morir",
+"name": "espera",
 "speed": 5.0
 } ]
 
@@ -138,7 +138,6 @@ shape = SubResource( 19 )
 [node name="area_alerta" type="Area2D" parent="Path2D/PathFollow2D/KinematicBody2D"]
 position = Vector2( -13.4026, 18.7399 )
 rotation = -0.00073997
-scale = Vector2( 1, 1 )
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/KinematicBody2D/area_alerta"]

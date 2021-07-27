@@ -8,6 +8,8 @@ var aceleracion = 600
 var movimiento = Vector2.ZERO
 var orientacion = 'abajo'
 var estaAtacando = false
+onready var shader_golpe = preload("res://shaders/golpe.tres")
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -97,3 +99,38 @@ func establecerAnimacionAtaque():
 		animacion.play("atacarArriba")
 	if(orientacion == "abajo"):
 		animacion.play("atacarAbajo")
+
+func manejar_dano(ataque_recibido, pos_enemigo):
+	flash()
+	retroceso(pos_enemigo)
+	Globales.vida -= ataque_recibido
+	print("fui golpeado " +  String(ataque_recibido) + ' ' + String(pos_enemigo) + ' ' + String(global_position) )
+
+func flash():
+	animacion.material.set_shader_param("intensidad_golpe", 0)
+	animacion.material.set_shader_param("intensidad_golpe", 0.4)
+	yield(get_tree().create_timer(0.1), "timeout")
+	animacion.material.set_shader_param("intensidad_golpe", 0.8)
+	yield(get_tree().create_timer(0.1), "timeout")
+	animacion.material.set_shader_param("intensidad_golpe", 0)
+
+func retroceso(pos_enemigo):
+	var pos_x
+	var pos_y
+	
+	if(global_position.x > pos_enemigo.x):
+		pos_x = global_position.x + 50
+	else:
+		pos_x = global_position.x -50
+	
+	if(global_position.y > pos_enemigo.y):
+		pos_y = global_position.y + 50
+	else:
+		pos_y = global_position.y -50
+	
+	var pos_objetivo = Vector2(pos_x, pos_y)
+	var direccion = global_position.direction_to(pos_objetivo).normalized() * 10
+	var _movimiento = move_and_collide(direccion)
+	
+
+	
