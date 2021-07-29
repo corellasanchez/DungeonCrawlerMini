@@ -104,8 +104,7 @@ func manejar_dano(ataque_recibido, pos_enemigo):
 	flash()
 	retroceso(pos_enemigo)
 	Globales.vida -= ataque_recibido
-	print("fui golpeado " +  String(ataque_recibido) + ' ' + String(pos_enemigo) + ' ' + String(global_position) )
-
+	
 func flash():
 	animacion.material.set_shader_param("intensidad_golpe", 0)
 	animacion.material.set_shader_param("intensidad_golpe", 0.4)

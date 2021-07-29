@@ -31,7 +31,10 @@ func estado_alerta(delta):
 		calcular_direccion()
 		if(animacion.animation != 'caminar'):
 			animacion.play('caminar')
-		var _mover = move_and_collide(direccion * acceleracion * delta)
+		var _colision = move_and_collide(direccion * acceleracion * delta)
+		if(_colision):
+			print('colide')
+			hacer_dano(_colision.collider)
 
 # el cangrejo descansa
 func estado_espera():
@@ -62,11 +65,14 @@ func estado_atacar(delta):
 		calcular_direccion()
 		if(animacion.animation != 'atacar'):
 			animacion.play('atacar')
-		var _mover = move_and_collide(direccion * acceleracion * delta)
+		var _colision = move_and_collide(direccion * acceleracion * delta)
+		if(_colision):
+			print('colide')
+			hacer_dano(_colision.collider)
 
 # detecta si el cangrejo se esta moviendo a la derecha o a la izquierda
 func calcular_direccion():
-	if(ultima_pos_x < objetivo.global_position.x):
+	if(ultima_pos_x <= objetivo.global_position.x):
 		#derecha
 		animacion.scale.x = 1
 	else:
@@ -120,5 +126,9 @@ func _on_animacion_frame_changed():
 
 # lastima al jugador
 func _on_pinzas_body_entered(body):
+	hacer_dano(body)
+
+# le hace dano al jugador
+func hacer_dano(body):
 	if(body.has_method("manejar_dano")):
 		body.manejar_dano(ataque, global_position)
