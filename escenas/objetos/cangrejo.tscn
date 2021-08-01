@@ -1,93 +1,94 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://assets/tiles/enemigos/cangrejo/cangrejo.png" type="Texture" id=1]
 [ext_resource path="res://scripts/cangrejo.gd" type="Script" id=2]
+[ext_resource path="res://shaders/golpe.tres" type="Material" id=3]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
-region = Rect2( 0, 64, 32, 32 )
+region = Rect2( 0, 96, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 1 )
-region = Rect2( 32, 64, 32, 32 )
+region = Rect2( 32, 96, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 1 )
-region = Rect2( 64, 64, 32, 32 )
+region = Rect2( 64, 96, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 1 )
-region = Rect2( 96, 64, 32, 32 )
+region = Rect2( 96, 96, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 32, 32 )
+region = Rect2( 0, 32, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 1 )
-region = Rect2( 32, 0, 32, 32 )
+region = Rect2( 32, 32, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 1 )
-region = Rect2( 64, 0, 32, 32 )
+region = Rect2( 64, 32, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 1 )
-region = Rect2( 96, 0, 32, 32 )
+region = Rect2( 96, 32, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 1 )
-region = Rect2( 0, 32, 32, 32 )
+region = Rect2( 0, 64, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 1 )
-region = Rect2( 32, 32, 32, 32 )
+region = Rect2( 32, 64, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 1 )
-region = Rect2( 64, 32, 32, 32 )
+region = Rect2( 64, 64, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 1 )
-region = Rect2( 96, 32, 32, 32 )
+region = Rect2( 96, 64, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 1 )
-region = Rect2( 0, 96, 32, 32 )
+region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=14]
 atlas = ExtResource( 1 )
-region = Rect2( 32, 96, 32, 32 )
+region = Rect2( 32, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=15]
 atlas = ExtResource( 1 )
-region = Rect2( 64, 96, 32, 32 )
+region = Rect2( 64, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=16]
 atlas = ExtResource( 1 )
-region = Rect2( 96, 96, 32, 32 )
+region = Rect2( 96, 0, 32, 32 )
 
 [sub_resource type="SpriteFrames" id=17]
 animations = [ {
 "frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
 "loop": true,
-"name": "morir",
+"name": "atacar",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
 "loop": true,
-"name": "espera",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
-"loop": true,
 "name": "caminar",
 "speed": 16.0
 }, {
+"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
+"loop": true,
+"name": "morir",
+"speed": 5.0
+}, {
 "frames": [ SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ) ],
 "loop": true,
-"name": "atacar",
-"speed": 10.0
+"name": "espera",
+"speed": 5.0
 } ]
 
 [sub_resource type="CircleShape2D" id=18]
@@ -97,11 +98,11 @@ radius = 5.0
 radius = 44.9438
 
 [sub_resource type="CapsuleShape2D" id=20]
-radius = 8.0
-height = 16.0
+radius = 7.82221
+height = 25.67
 
-[sub_resource type="CapsuleShape2D" id=21]
-height = 18.0
+[sub_resource type="RectangleShape2D" id=21]
+extents = Vector2( 4.84339, 7.06835 )
 
 [node name="cangrejo" type="KinematicBody2D"]
 position = Vector2( -0.222717, -10.468 )
@@ -110,10 +111,11 @@ collision_mask = 7
 script = ExtResource( 2 )
 
 [node name="animacion" type="AnimatedSprite" parent="."]
+material = ExtResource( 3 )
 position = Vector2( 1.90735e-06, -0.198423 )
 frames = SubResource( 17 )
-animation = "atacar"
-frame = 2
+animation = "espera"
+frame = 1
 speed_scale = 1.1
 
 [node name="area_colision" type="CollisionShape2D" parent="."]
@@ -124,7 +126,7 @@ shape = SubResource( 18 )
 [node name="area_alerta" type="Area2D" parent="."]
 collision_layer = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="area_alerta"]
+[node name="colision" type="CollisionShape2D" parent="area_alerta"]
 position = Vector2( 0, 10.0226 )
 shape = SubResource( 19 )
 
@@ -136,21 +138,27 @@ autostart = true
 collision_layer = 4
 collision_mask = 7
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="area_ataque"]
-position = Vector2( -0.223, 10.5 )
+[node name="colision" type="CollisionShape2D" parent="area_ataque"]
+position = Vector2( -0.891182, 9.38638 )
 rotation = 1.5708
 shape = SubResource( 20 )
 
 [node name="pinzas" type="Area2D" parent="."]
 position = Vector2( 32.5178, 0 )
-collision_layer = 4
+collision_layer = 0
 
-[node name="colision_pinzas" type="CollisionShape2D" parent="pinzas"]
-position = Vector2( -32.741, 10 )
-rotation = -1.5708
+[node name="pinza_derecha" type="CollisionShape2D" parent="pinzas"]
+position = Vector2( -24.0497, 9.13171 )
 shape = SubResource( 21 )
+disabled = true
+
+[node name="pinza_izquierda" type="CollisionShape2D" parent="pinzas"]
+position = Vector2( -41.4313, 8.79988 )
+shape = SubResource( 21 )
+disabled = true
 
 [connection signal="ready" from="." to="." method="_on_cangrejo_ready"]
+[connection signal="animation_finished" from="animacion" to="." method="_on_animacion_animation_finished"]
 [connection signal="frame_changed" from="animacion" to="." method="_on_animacion_frame_changed"]
 [connection signal="body_entered" from="area_alerta" to="." method="_on_area_alerta_body_entered"]
 [connection signal="body_exited" from="area_alerta" to="." method="_on_area_alerta_body_exited"]

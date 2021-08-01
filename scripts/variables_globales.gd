@@ -1,5 +1,6 @@
 extends Node2D
 
+var ataque
 var cristales 
 var idioma
 var llaves
@@ -12,6 +13,7 @@ var vida
 var vida_max
 
 func _ready():
+	ataque = 10
 	cristales = 10
 	idioma= 'es'
 	llaves = 1

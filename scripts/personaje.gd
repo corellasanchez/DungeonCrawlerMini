@@ -8,12 +8,14 @@ var aceleracion = 600
 var movimiento = Vector2.ZERO
 var orientacion = 'abajo'
 var estaAtacando = false
-onready var shader_golpe = preload("res://shaders/golpe.tres")
+const danoClass = preload("res://scripts/dano.gd")
+var dano
+var manejando_dano = false
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	dano = danoClass.new()
 	
 func _physics_process(delta):
 	establecer_orientacion()
@@ -82,10 +84,14 @@ func _on_animacion_animation_finished():
 	estaAtacando = false
 	if(animacion.animation == "atacarLado"):
 		animacion.play("descansoLado")
+		$ataque/derecha.disabled = true
+		$ataque/izquierda.disabled = true
 	if(animacion.animation == "atacarArriba"):
 		animacion.play("descansoArriba")
+		$ataque/arriba.disabled = true
 	if(animacion.animation == "atacarAbajo"):
 		animacion.play("descansoAbajo")
+		$ataque/abajo.disabled = true
 
 func establecerAnimacionAtaque():
 	estaAtacando = true
@@ -101,35 +107,34 @@ func establecerAnimacionAtaque():
 		animacion.play("atacarAbajo")
 
 func manejar_dano(ataque_recibido, pos_enemigo):
-	flash()
-	retroceso(pos_enemigo)
+	manejando_dano = true
 	Globales.vida -= ataque_recibido
-	
-func flash():
-	animacion.material.set_shader_param("intensidad_golpe", 0)
-	animacion.material.set_shader_param("intensidad_golpe", 0.4)
-	yield(get_tree().create_timer(0.1), "timeout")
-	animacion.material.set_shader_param("intensidad_golpe", 0.8)
-	yield(get_tree().create_timer(0.1), "timeout")
-	animacion.material.set_shader_param("intensidad_golpe", 0)
+	dano.flash(self, animacion.material)
+	dano.retroceso(self, pos_enemigo)
+	yield(get_tree().create_timer(0.2), "timeout")
+	manejando_dano = false
 
-func retroceso(pos_enemigo):
-	var pos_x
-	var pos_y
+
+func _on_ataque_body_entered(body):
+	hacer_dano(body)
 	
-	if(global_position.x > pos_enemigo.x):
-		pos_x = global_position.x + 50
-	else:
-		pos_x = global_position.x -50
+# le hace dano al jugador
+func hacer_dano(body):
+	if(body.has_method("manejar_dano")):
+		if(!body.manejando_dano):
+			body.manejar_dano(Globales.ataque, global_position)
+
+
+func _on_animacion_frame_changed():
+	if(animacion.frame == 1 && estaAtacando == true):
+		if(animacion.animation == "atacarLado" && animacion.scale.x == 1):
+			$ataque/derecha.disabled = false
+		if(animacion.animation == "atacarLado" && animacion.scale.x == -1):	
+			$ataque/izquierda.disabled = false
+		if(animacion.animation == "atacarArriba"):
+			$ataque/arriba.disabled = false
+		if(animacion.animation == "atacarAbajo"):
+			$ataque/abajo.disabled = false
 	
-	if(global_position.y > pos_enemigo.y):
-		pos_y = global_position.y + 50
-	else:
-		pos_y = global_position.y -50
-	
-	var pos_objetivo = Vector2(pos_x, pos_y)
-	var direccion = global_position.direction_to(pos_objetivo).normalized() * 10
-	var _movimiento = move_and_collide(direccion)
 	
 
-	
