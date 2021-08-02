@@ -215,7 +215,7 @@ material = ExtResource( 3 )
 position = Vector2( 1.90735e-06, -0.198423 )
 frames = SubResource( 17 )
 animation = "espera"
-frame = 3
+frame = 5
 speed_scale = 1.1
 playing = true
 

@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-const acceleracion = 50
+const acceleracion = 70
 const danoClass = preload("res://scripts/dano.gd")
 export var ataque = 10
 onready var animacion = $animacion
