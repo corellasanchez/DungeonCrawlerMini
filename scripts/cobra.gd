@@ -39,8 +39,6 @@ func estado_alerta(delta):
 
 # el cangrejo descansa
 func estado_espera():
-	#var val = randi() % 1
-	#print(val)
 	animacion.speed_scale = 1.1
 	animacion.play("espera")
 	yield(get_tree().create_timer(2.0), "timeout")
@@ -124,15 +122,11 @@ func _on_area_alerta_body_exited(body):
 # activa el hitbox durante la animacion de ataque
 func _on_animacion_frame_changed():
 	if(animacion.animation == 'atacar' && animacion.scale.x == 1 && animacion.frame == 2):
-		$pinzas/pinza_derecha.disabled = false
+		$ataque/derecha.disabled = false
 	if(animacion.animation == 'atacar' && animacion.scale.x == -1 && animacion.frame == 2):
-		$pinzas/pinza_izquierda.disabled = false
-	if(animacion.animation == 'morir' && animacion.frame == 3):
+		$ataque/izquierda.disabled = false
+	if(animacion.animation == 'morir' && animacion.frame == 5):
 		animacion.stop() 
-
-# lastima al jugador
-func _on_pinzas_body_entered(body):
-	hacer_dano(body)
 
 # le hace dano al jugador
 func hacer_dano(body):
@@ -142,8 +136,8 @@ func hacer_dano(body):
 
 
 func _on_animacion_animation_finished():
-	$pinzas/pinza_derecha.disabled = true
-	$pinzas/pinza_izquierda.disabled = true
+	$ataque/derecha.disabled = true
+	$ataque/izquierda.disabled = true
 		
 func verificar_vida():
 	if(vida <= 0):
@@ -162,6 +156,9 @@ func verificar_vida():
 
 func manejar_dano(ataque_recibido, pos_enemigo):
 	manejando_dano = true
+	animacion.speed_scale = 3
+	estado = 'golpeado'
+	animacion.play('golpeado')
 	dano.flash(self, animacion.material)
 	dano.retroceso(self, pos_enemigo)
 	vida -= ataque_recibido
@@ -169,5 +166,5 @@ func manejar_dano(ataque_recibido, pos_enemigo):
 	yield(get_tree().create_timer(0.5), "timeout")
 	manejando_dano = false
 	
-	
-	
+func _on_ataque_body_entered(body):
+	hacer_dano(body)

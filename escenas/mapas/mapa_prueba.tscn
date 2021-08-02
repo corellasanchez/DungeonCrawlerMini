@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/tiles/agua/agua.tres" type="Texture" id=1]
 [ext_resource path="res://escenas/objetos/fogata.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://assets/tiles/vegetacion.tres" type="TileSet" id=10]
 [ext_resource path="res://assets/tiles/muros.tres" type="TileSet" id=11]
 [ext_resource path="res://assets/tiles/puentes.tres" type="TileSet" id=12]
+[ext_resource path="res://escenas/objetos/cobra.tscn" type="PackedScene" id=13]
 [ext_resource path="res://escenas/objetos/cangrejo.tscn" type="PackedScene" id=14]
 
 [sub_resource type="TileSet" id=1]
@@ -95,6 +96,9 @@ position = Vector2( 232.5, 168.646 )
 
 [node name="cangrejo" parent="." instance=ExtResource( 14 )]
 position = Vector2( 148.503, 50.3676 )
+
+[node name="cobra" parent="." instance=ExtResource( 13 )]
+position = Vector2( 391.777, 62.532 )
 
 [node name="personaje" parent="." instance=ExtResource( 4 )]
 position = Vector2( 87.432, 98.1107 )
