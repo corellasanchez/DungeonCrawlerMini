@@ -16,14 +16,15 @@ var ultima_pos_x
 var vida = 40
 
 func _physics_process(delta):
-	if (estado == 'espera'):
-		estado_espera()
-	if (estado == 'alerta'):
-		estado_alerta(delta)
-	if (estado == 'patrullar'):
-		estado_patrullar(delta)
-	if (estado == 'atacar'):
-		estado_atacar(delta)
+	if(estado != 'muerto'):
+		if (estado == 'espera'):
+			estado_espera()
+		if (estado == 'alerta'):
+			estado_alerta(delta)
+		if (estado == 'patrullar'):
+			estado_patrullar(delta)
+		if (estado == 'atacar'):
+			estado_atacar(delta)
 		
 # el cangrejo persigue al jugador
 func estado_alerta(delta):
@@ -41,7 +42,7 @@ func estado_alerta(delta):
 func estado_espera():
 	animacion.speed_scale = 1.1
 	animacion.play("espera")
-	yield(get_tree().create_timer(2.0), "timeout")
+	yield(get_tree().create_timer(1.0), "timeout")
 
 # el cangrejo se mueve hacia la derecha y luego a la izquierda
 func estado_patrullar(delta):

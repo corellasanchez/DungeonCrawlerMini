@@ -121,6 +121,7 @@ func _on_ataque_body_entered(body):
 # le hace dano al jugador
 func hacer_dano(body):
 	if(body.has_method("manejar_dano")):
+		print(body.name)
 		if(!body.manejando_dano):
 			body.manejar_dano(Globales.ataque, global_position)
 

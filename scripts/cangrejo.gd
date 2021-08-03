@@ -16,14 +16,15 @@ var ultima_pos_x
 var vida = 40
 
 func _physics_process(delta):
-	if (estado == 'espera'):
-		estado_espera()
-	if (estado == 'alerta'):
-		estado_alerta(delta)
-	if (estado == 'patrullar'):
-		estado_patrullar(delta)
-	if (estado == 'atacar'):
-		estado_atacar(delta)
+	if(estado != 'muerto'):
+		if (estado == 'espera'):
+			estado_espera()
+		if (estado == 'alerta'):
+			estado_alerta(delta)
+		if (estado == 'patrullar'):
+			estado_patrullar(delta)
+		if (estado == 'atacar'):
+			estado_atacar(delta)
 		
 # el cangrejo persigue al jugador
 func estado_alerta(delta):

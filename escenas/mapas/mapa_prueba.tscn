@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/tiles/agua/agua.tres" type="Texture" id=1]
 [ext_resource path="res://escenas/objetos/fogata.tscn" type="PackedScene" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://assets/tiles/puentes.tres" type="TileSet" id=12]
 [ext_resource path="res://escenas/objetos/cobra.tscn" type="PackedScene" id=13]
 [ext_resource path="res://escenas/objetos/cangrejo.tscn" type="PackedScene" id=14]
+[ext_resource path="res://escenas/objetos/arbusto.tscn" type="PackedScene" id=15]
 
 [sub_resource type="TileSet" id=1]
 0/name = "agua no colision"
@@ -100,8 +101,12 @@ position = Vector2( 148.503, 50.3676 )
 [node name="cobra" parent="." instance=ExtResource( 13 )]
 position = Vector2( 391.777, 62.532 )
 
+[node name="arbusto" parent="." instance=ExtResource( 15 )]
+position = Vector2( 91.8812, 139.034 )
+
 [node name="personaje" parent="." instance=ExtResource( 4 )]
 position = Vector2( 87.432, 98.1107 )
+z_as_relative = false
 
 [node name="vegetacion" type="TileMap" parent="."]
 tile_set = ExtResource( 10 )
@@ -110,9 +115,10 @@ cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
 collision_layer = 2
 collision_mask = 5
 format = 1
-tile_data = PoolIntArray( -65517, 4, 0, -65499, 4, 0, 131075, 4, 0, 655386, 4, 0, 983041, 4, 0, 1703947, 536870915, 0 )
+tile_data = PoolIntArray( -65517, 4, 0, -65499, 4, 0, 131075, 4, 0, 524293, 20, 0, 524294, 20, 0, 589829, 20, 0, 589830, 20, 0, 655365, 12, 0, 655366, 12, 0, 655367, 12, 0, 655386, 4, 0, 720901, 12, 0, 720902, 12, 0, 720903, 12, 0, 983041, 4, 0, 1703947, 536870915, 0 )
 
 [node name="ui_principal" parent="." instance=ExtResource( 5 )]
+position = Vector2( 6.00677, 14.6832 )
 
 [connection signal="body_exited" from="puerta" to="puerta" method="_on_puerta_body_exited"]
 [connection signal="mostrarMensaje" from="puerta" to="ui_principal" method="mostrar_mensaje"]
