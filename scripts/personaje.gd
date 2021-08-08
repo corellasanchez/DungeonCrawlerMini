@@ -12,7 +12,6 @@ const danoClass = preload("res://scripts/dano.gd")
 var dano
 var manejando_dano = false
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	dano = danoClass.new()
@@ -68,7 +67,7 @@ func establecer_orientacion():
 			orientacion = 'abajo'
 			animacion.play("caminarAbajo")
 			return
-
+			
 		#descanso
 		if Input.is_action_just_released("ui_right") :
 			animacion.play("descansoLado")
@@ -79,33 +78,19 @@ func establecer_orientacion():
 		if Input.is_action_just_released("ui_down") :
 			animacion.play("descansoAbajo")
 
-
-func _on_animacion_animation_finished():
-	estaAtacando = false
-	if(animacion.animation == "atacarLado"):
-		animacion.play("descansoLado")
-		$ataque/derecha.disabled = true
-		$ataque/izquierda.disabled = true
-	if(animacion.animation == "atacarArriba"):
-		animacion.play("descansoArriba")
-		$ataque/arriba.disabled = true
-	if(animacion.animation == "atacarAbajo"):
-		animacion.play("descansoAbajo")
-		$ataque/abajo.disabled = true
-
 func establecerAnimacionAtaque():
 	estaAtacando = true
 	if(orientacion == "derecha"):
 		animacion.scale.x = 1
-		animacion.play("atacarLado")
+		$animaciones_herramienta.play('atacar_derecha')
 	if(orientacion == "izquierda"):
 		animacion.scale.x = -1
-		animacion.play("atacarLado")
+		$animaciones_herramienta.play('atacar_izquierda')
 	if(orientacion == "arriba"):
-		animacion.play("atacarArriba")
+		$animaciones_herramienta.play('atacar_arriba')
 	if(orientacion == "abajo"):
-		animacion.play("atacarAbajo")
-
+		$animaciones_herramienta.play('atacar_abajo')
+		
 func manejar_dano(ataque_recibido, pos_enemigo):
 	manejando_dano = true
 	Globales.vida -= ataque_recibido
@@ -113,29 +98,28 @@ func manejar_dano(ataque_recibido, pos_enemigo):
 	dano.retroceso(self, pos_enemigo)
 	yield(get_tree().create_timer(0.2), "timeout")
 	manejando_dano = false
+	
+func _on_animaciones_herramienta_animation_finished(anim_name):
+	estaAtacando = false
+	$arma/area_arma/colision.disabled = true
+	if(anim_name == "atacar_derecha" || anim_name == "atacar_izquierda" ):
+		animacion.play("descansoLado")
+	if(anim_name == "atacar_arriba"):
+		animacion.play("descansoArriba")
+	if(anim_name == "atacar_abajo"):
+		animacion.play("descansoAbajo")
 
-
-func _on_ataque_body_entered(body):
+func _on_area_arma_body_entered(body):
 	hacer_dano(body)
 	
 # le hace dano al jugador
 func hacer_dano(body):
-	if(body.has_method("manejar_dano")):
+	if(body.name !="personaje" && body.has_method("manejar_dano")):
 		print(body.name)
 		if(!body.manejando_dano):
 			body.manejar_dano(Globales.ataque, global_position)
 
-
-func _on_animacion_frame_changed():
-	if(animacion.frame == 1 && estaAtacando == true):
-		if(animacion.animation == "atacarLado" && animacion.scale.x == 1):
-			$ataque/derecha.disabled = false
-		if(animacion.animation == "atacarLado" && animacion.scale.x == -1):	
-			$ataque/izquierda.disabled = false
-		if(animacion.animation == "atacarArriba"):
-			$ataque/arriba.disabled = false
-		if(animacion.animation == "atacarAbajo"):
-			$ataque/abajo.disabled = false
-	
-	
-
+func _on_animaciones_herramienta_animation_started(anim_name):
+	if(anim_name == "atacar_derecha" || anim_name == "atacar_izquierda" || anim_name == "atacar_arriba" || anim_name == "atacar_abajo"):
+		estaAtacando = true
+		$arma/area_arma/colision.disabled = false
