@@ -1,0 +1,128 @@
+[gd_scene load_steps=27 format=2]
+
+[ext_resource path="res://assets/tiles/monedas/animaciones/MonedaD.png" type="Texture" id=1]
+[ext_resource path="res://assets/tiles/corazon/corazon.png" type="Texture" id=2]
+[ext_resource path="res://assets/tiles/monedas/animaciones/MonedaP.png" type="Texture" id=3]
+[ext_resource path="res://scripts/botin_aleatorio.gd" type="Script" id=4]
+[ext_resource path="res://assets/tiles/monedas/animaciones/MonedaR.png" type="Texture" id=5]
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 3 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 3 )
+region = Rect2( 32, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 3 )
+region = Rect2( 48, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 3 )
+region = Rect2( 64, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 2 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=27]
+atlas = ExtResource( 2 )
+region = Rect2( 48, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 2 )
+region = Rect2( 64, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 1 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 1 )
+region = Rect2( 32, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 1 )
+region = Rect2( 48, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 1 )
+region = Rect2( 64, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=29]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=30]
+atlas = ExtResource( 5 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=31]
+atlas = ExtResource( 5 )
+region = Rect2( 32, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=32]
+atlas = ExtResource( 5 )
+region = Rect2( 48, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=33]
+atlas = ExtResource( 5 )
+region = Rect2( 64, 0, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=12]
+resource_local_to_scene = true
+animations = [ {
+"frames": [ SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ) ],
+"loop": true,
+"name": "moneda_plateada",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 24 ), SubResource( 25 ), SubResource( 27 ), SubResource( 28 ) ],
+"loop": true,
+"name": "corazon",
+"speed": 4.0
+}, {
+"frames": [ SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ) ],
+"loop": true,
+"name": "moneda_dorada",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ) ],
+"loop": true,
+"name": "moneda_roja",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=18]
+radius = 4.13681
+
+[node name="botin" type="KinematicBody2D"]
+position = Vector2( -0.222717, -10.468 )
+collision_layer = 4
+collision_mask = 7
+script = ExtResource( 4 )
+
+[node name="animacion" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.6, 0.6 )
+frames = SubResource( 12 )
+animation = "moneda_roja"
+frame = 2
+playing = true
+
+[node name="colision" type="CollisionShape2D" parent="."]
+shape = SubResource( 18 )
+
+[connection signal="animation_finished" from="animacion" to="." method="_on_animacion_animation_finished"]

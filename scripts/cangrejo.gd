@@ -149,6 +149,9 @@ func _on_animacion_animation_finished():
 func verificar_vida():
 	if(vida <= 0):
 		estado = 'muerto'
+		remove_child($area_colision);
+		remove_child($area_ataque);
+		remove_child($pinzas);
 		$Timer.stop()
 		animacion.play("morir")
 		yield(get_tree().create_timer(0.2), "timeout")

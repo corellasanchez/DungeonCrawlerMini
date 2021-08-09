@@ -10,6 +10,8 @@ func _ready():
 
 
 func manejar_dano(_ataque_recibido, _pos_enemigo):
+	
+	remove_child($colision)
 	manejando_dano = true
 	animacion.play('explosion')
 	manejando_dano = false
