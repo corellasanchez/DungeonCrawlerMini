@@ -1,21 +1,39 @@
 extends Node2D
 
-
-var manejando_dano = false
 onready var animacion = $animacion
-
 
 # Botines disponibles
 var botines = [
 	{
 		"nombre": "moneda_dorada",
-		"valor": 10,
+		"valor": 20,
 		"tipo": "monedas"
-	}
+	},
+	{
+		"nombre": "moneda_roja",
+		"valor": 5,
+		"tipo": "monedas"
+	},
+	{
+		"nombre": "moneda_plateada",
+		"valor": 1,
+		"tipo": "monedas"
+	},
+	{
+		"nombre": "corazon",
+		"valor": 15,
+		"tipo": "vida"
+	},
+	{
+		"nombre": "nada",
+		"valor": 0,
+		"tipo": "nada"
+	},
 	]
+	
+var botin_seleccionado;
 
 var tipos_botin:= RNGTools.WeightedBag.new()
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -26,37 +44,36 @@ func _ready():
 func botin_aleatorio():
 	tipos_botin.weights = {
 	corazon = 4,
-	moneda_dorada = 1,
+	nada = 4,
 	moneda_plateada = 4,
+	moneda_dorada = 1,
 	moneda_roja = 1
 	}
-	var elemento = RNGTools.pick_weighted(tipos_botin)
-	print(elemento);
+	var botin = RNGTools.pick_weighted(tipos_botin)
+	print(str(botin));
+	seleccionarBotin(botin)
 
-
-func manejar_dano(_ataque_recibido, _pos_enemigo):
+func coleccionar():
+	if(botin_seleccionado.tipo == 'vida'):
+		Globales.vida += botin_seleccionado.valor
+	if(botin_seleccionado.tipo == 'monedas'):
+		Globales.monedas += botin_seleccionado.valor
+	self.queue_free()
 	
-	remove_child($colision)
-	manejando_dano = true
-	animacion.play('explosion')
-	manejando_dano = false
-
-
-func _on_animacion_animation_finished():
-	pass
-	#self.queue_free()
-	
-
-
-
-
-
 
 #Equipar una espada de la lista
-#func equipar(nombre: String):
-#	for i in range(0,tiposDeEspada.size()):
-#		if(tiposDeEspada[i].nombre == nombre):
-#			espadaEquipada = tiposDeEspada[i]
-#			texturaEspada.texture = tiposDeEspada[i].textura
-#			texturaEspada.visible = true
+func seleccionarBotin(nombre: String):
+	for i in range(0,botines.size()):
+		if(botines[i].nombre == nombre):
+			botin_seleccionado = botines[i]
+			if(botin_seleccionado.tipo == 'nada'):
+				self.queue_free()
+			else:
+				visible = true
+				animacion.play(nombre)
+				
+				
 
+func _on_area_coleccionable_body_entered(body):
+	if(body.name == 'personaje'):
+		coleccionar()

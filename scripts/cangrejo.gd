@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 const acceleracion = 50
 const danoClass = preload("res://scripts/dano.gd")
+
 export var ataque = 10
 onready var animacion = $animacion
 var caminando = false
@@ -14,6 +15,7 @@ var orientaciones = ['izquierda', 'derecha']
 var pos_objetivo: Vector2
 var ultima_pos_x
 var vida = 40
+var botin
 
 func _physics_process(delta):
 	if(estado != 'muerto'):
@@ -79,13 +81,15 @@ func calcular_direccion():
 		animacion.scale.x = -1
 
 func _on_cangrejo_ready():
+	randomize()
 	ultima_pos_x = global_position.x
 	orientacion = RNGTools.pick(orientaciones)
 	dano = danoClass.new()
 	
 # cambia la direccion del patrullaje hacia la derecha o la izquierda
 func _on_Timer_timeout():
-	if(estado != 'muerto'): 
+	if(estado != 'muerto'):
+		randomize() 
 		$Timer.wait_time =  RNGTools.pick([2,3,4])
 		if(estado == 'espera' || estado =='patrullar'):
 			if(estado == 'espera'):
@@ -158,11 +162,11 @@ func verificar_vida():
 		$particulas.emitting = true
 		yield(get_tree().create_timer(0.5), "timeout")
 		animacion.visible = false
+		Globales.generar_botin(get_parent(),$particulas.global_position)
 		$particulas.process_material.orbit_velocity = 0
 		$particulas.one_shot = true
 		yield(get_tree().create_timer(0.5), "timeout")
 		self.queue_free()
-		
 
 func manejar_dano(ataque_recibido, pos_enemigo):
 	manejando_dano = true

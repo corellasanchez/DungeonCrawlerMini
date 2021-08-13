@@ -1,5 +1,6 @@
 extends Node2D
 
+const clase_botin_aleatorio = preload("res://escenas/objetos/botin_aleatorio.tscn")
 var ataque
 var cristales 
 var idioma
@@ -30,3 +31,8 @@ func mostrar_mensaje():
 	
 func ocultar_mensaje():
 	$mensaje.ocultar_mensaje()
+	
+func generar_botin(escena,pos):
+	var botin = clase_botin_aleatorio.instance()
+	botin.global_position = pos
+	escena.add_child(botin)

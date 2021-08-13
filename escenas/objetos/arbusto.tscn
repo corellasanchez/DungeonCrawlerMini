@@ -65,6 +65,7 @@ animations = [ {
 
 [node name="arbusto" type="KinematicBody2D"]
 position = Vector2( -0.222717, -10.468 )
+z_index = 1
 collision_layer = 4
 collision_mask = 7
 script = ExtResource( 4 )
@@ -78,3 +79,4 @@ playing = true
 polygon = PoolVector2Array( 7.93607, 0.99547, 7.93607, -2.87382, 4.86048, -6.14783, 0.098278, -7.23917, -5.06078, -6.24705, -7.93794, -3.07224, -7.93794, 0.697832, 0.111259, 5.53797 )
 
 [connection signal="animation_finished" from="animacion" to="." method="_on_animacion_animation_finished"]
+[connection signal="frame_changed" from="animacion" to="." method="_on_animacion_frame_changed"]
