@@ -9,13 +9,13 @@ points = PoolVector2Array( 0.381836, 10.2838, 15.4522, 10.2838, 15.1173, 16.312,
 points = PoolVector2Array( 0, 10.8817, 15.8622, 10.8817, 15.1924, 15.9771, 0, 15.9052, 0.12204, 15.3073 )
 
 [sub_resource type="ConvexPolygonShape2D" id=3]
-points = PoolVector2Array( 0.326019, 15.4681, 0.605103, 1.5141, 4.79132, 1.5141, 5.0704, 12.1192, 13.7219, 11.561, 14.001, 15.7473 )
+points = PoolVector2Array( 1.24079, 0.0666504, 5.69834, 0.0666504, 5.69834, 11.0195, 15.3887, 11.0195, 15.1949, 22.3544, 1.24079, 22.3544, 1.24079, 18.2845, 1.24079, 11.1136 )
 
 [sub_resource type="ConvexPolygonShape2D" id=4]
-points = PoolVector2Array( 15.8622, 15.7473, 0.512741, 15.5728, 0.233658, 10.7238, 16, 10.7238 )
+points = PoolVector2Array( 16, 22.8417, 0, 22.8417, 0.233658, 10.7238, 16, 10.7238 )
 
 [sub_resource type="ConvexPolygonShape2D" id=5]
-points = PoolVector2Array( 11.3046, 11.0029, 11.3046, 1.79321, 15.2117, 1.5141, 14.9326, 15.7473, 2.37396, 15.7473, 2.65305, 11.561 )
+points = PoolVector2Array( 11.3046, 11.0029, 11.3046, 1.79321, 15.2117, 1.5141, 15.173, 22.8417, 0.249855, 23.2294, 0.637459, 11.4071 )
 
 [sub_resource type="ConvexPolygonShape2D" id=6]
 points = PoolVector2Array( 0.607132, 2.73511, 4.79335, 3.01416, 4.79335, 10.8284, 14.003, 11.6656, 14.5612, 15.2938, 1.16528, 15.2938 )
@@ -355,7 +355,7 @@ points = PoolVector2Array( 14.6556, 14.8279, 10.7484, 14.8279, 10.7484, 1.43201,
 14/texture = ExtResource( 1 )
 14/tex_offset = Vector2( 0, 0 )
 14/modulate = Color( 1, 1, 1, 1 )
-14/region = Rect2( 64, 512, 16, 32 )
+14/region = Rect2( 64, 528, 16, 16 )
 14/tile_mode = 0
 14/occluder_offset = Vector2( 0, 0 )
 14/navigation_offset = Vector2( 0, 0 )
@@ -551,7 +551,7 @@ points = PoolVector2Array( 14.6556, 14.8279, 10.7484, 14.8279, 10.7484, 1.43201,
 27/texture = ExtResource( 1 )
 27/tex_offset = Vector2( 0, 0 )
 27/modulate = Color( 1, 1, 1, 1 )
-27/region = Rect2( 48, 576, 16, 32 )
+27/region = Rect2( 48, 592, 16, 16 )
 27/tile_mode = 0
 27/occluder_offset = Vector2( 0, 0 )
 27/navigation_offset = Vector2( 0, 0 )
@@ -1359,3 +1359,17 @@ points = PoolVector2Array( 14.6556, 14.8279, 10.7484, 14.8279, 10.7484, 1.43201,
 83/shape_one_way_margin = 0.0
 83/shapes = [  ]
 83/z_index = 0
+84/name = "tiles.png 84"
+84/texture = ExtResource( 1 )
+84/tex_offset = Vector2( 0, 0 )
+84/modulate = Color( 1, 1, 1, 1 )
+84/region = Rect2( 80, 576, 16, 16 )
+84/tile_mode = 0
+84/occluder_offset = Vector2( 0, 0 )
+84/navigation_offset = Vector2( 0, 0 )
+84/shape_offset = Vector2( 0, 0 )
+84/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+84/shape_one_way = false
+84/shape_one_way_margin = 0.0
+84/shapes = [  ]
+84/z_index = 0
