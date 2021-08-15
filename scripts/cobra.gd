@@ -154,7 +154,7 @@ func verificar_vida():
 		$particulas.emitting = true
 		yield(get_tree().create_timer(0.5), "timeout")
 		animacion.visible = false
-		Globales.generar_botin(get_parent(),$particulas.global_position)
+		Globales.generar_botin(get_parent(),$particulas.global_position,'aleatorio')
 		$particulas.process_material.orbit_velocity = 0
 		$particulas.one_shot = true
 		yield(get_tree().create_timer(0.5), "timeout")

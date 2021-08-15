@@ -18,5 +18,5 @@ func _on_animacion_animation_finished():
 
 func _on_animacion_frame_changed():
 	if($animacion.frame == 1):
-		Globales.generar_botin(get_parent(), global_position)
+		Globales.generar_botin(get_parent(), global_position, 'arbusto')
 	

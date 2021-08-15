@@ -21,7 +21,6 @@ func _on_area_body_entered(body):
 
 # le hace dano al jugador
 func hacer_dano(body):
-	print(body.name)
 	if(body.has_method("manejar_dano")):
 		if(!body.manejando_dano):
 			body.manejar_dano(5, global_position)

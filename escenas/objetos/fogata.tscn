@@ -42,20 +42,20 @@ animations = [ {
 "speed": 6.0
 } ]
 
-[sub_resource type="CanvasItemMaterial" id=13]
+[sub_resource type="CanvasItemMaterial" id=10]
 particles_animation = true
 particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = true
 
-[sub_resource type="Gradient" id=10]
+[sub_resource type="Gradient" id=11]
 offsets = PoolRealArray( 0.0108108, 1 )
 colors = PoolColorArray( 1, 0.305882, 0.305882, 1, 1, 0.831373, 0.635294, 1 )
 
-[sub_resource type="GradientTexture" id=11]
-gradient = SubResource( 10 )
+[sub_resource type="GradientTexture" id=12]
+gradient = SubResource( 11 )
 
-[sub_resource type="ParticlesMaterial" id=12]
+[sub_resource type="ParticlesMaterial" id=13]
 emission_shape = 2
 emission_box_extents = Vector3( 1, 1, 1 )
 flag_disable_z = true
@@ -67,7 +67,7 @@ tangential_accel = -68.42
 tangential_accel_random = 0.27
 angle = -214.7
 scale = 2.5
-color_ramp = SubResource( 11 )
+color_ramp = SubResource( 12 )
 anim_speed = 43.79
 anim_offset = 0.18
 
@@ -93,15 +93,15 @@ disabled = true
 
 [node name="animacion" type="AnimatedSprite" parent="."]
 frames = SubResource( 9 )
-frame = 5
+frame = 3
 playing = true
 
 [node name="particulas" type="Particles2D" parent="."]
-material = SubResource( 13 )
+material = SubResource( 10 )
 emitting = false
 lifetime = 2.0
 explosiveness = 0.23
 randomness = 0.29
-process_material = SubResource( 12 )
+process_material = SubResource( 13 )
 
 [connection signal="body_entered" from="KinematicBody2D/area" to="." method="_on_area_body_entered"]

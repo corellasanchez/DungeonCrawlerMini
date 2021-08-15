@@ -32,7 +32,6 @@ func mostrar_mensaje():
 func ocultar_mensaje():
 	$mensaje.ocultar_mensaje()
 	
-func generar_botin(escena,pos):
+func generar_botin(escena,pos,tipo):
 	var botin = clase_botin_aleatorio.instance()
-	botin.global_position = pos
-	escena.add_child(botin)
+	botin.inicializar(escena,pos,tipo)

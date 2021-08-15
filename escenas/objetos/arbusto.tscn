@@ -76,7 +76,8 @@ animation = "normal"
 playing = true
 
 [node name="colision" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( 7.93607, 0.99547, 7.93607, -2.87382, 4.86048, -6.14783, 0.098278, -7.23917, -5.06078, -6.24705, -7.93794, -3.07224, -7.93794, 0.697832, 0.111259, 5.53797 )
+position = Vector2( 0, 0.210224 )
+polygon = PoolVector2Array( 7.93607, 0.99547, 7.93607, -2.87382, 4.86048, -6.14783, 0.098278, -7.23917, -5.06078, -6.24705, -7.93794, -3.07224, -7.93794, 0.697832, -7.69143, 5.70721, -4.95852, 6.86345, 0.191967, 7.49412, 5.02712, 7.07367, 7.86514, 5.6021 )
 
 [connection signal="animation_finished" from="animacion" to="." method="_on_animacion_animation_finished"]
 [connection signal="frame_changed" from="animacion" to="." method="_on_animacion_frame_changed"]

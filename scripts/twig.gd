@@ -7,14 +7,14 @@ export var ataque = 10
 onready var animacion = $animacion
 var caminando = false
 var dano
-var estado = 'espera'
+var estado = 'alerta'
 var manejando_dano= false
 var objetivo = null
 var orientacion = ''
 var orientaciones = ['izquierda', 'derecha']
 var pos_objetivo: Vector2
 var ultima_pos_x
-var vida = 40
+var vida = 20
 var botin
 
 func _physics_process(delta):
@@ -28,7 +28,7 @@ func _physics_process(delta):
 		if (estado == 'atacar'):
 			estado_atacar(delta)
 		
-# el cangrejo persigue al jugador
+# el twig persigue al jugador
 func estado_alerta(delta):
 	if(objetivo):
 		animacion.speed_scale = 2
@@ -40,7 +40,7 @@ func estado_alerta(delta):
 			animacion.play('caminar')
 		var _colision = move_and_collide(direccion * acceleracion * delta)
 
-# el cangrejo descansa
+# el twig descansa
 func estado_espera():
 	#var val = randi() % 1
 	#print(val)
@@ -48,7 +48,7 @@ func estado_espera():
 	animacion.play("espera")
 	yield(get_tree().create_timer(2.0), "timeout")
 
-# el cangrejo se mueve hacia la derecha y luego a la izquierda
+# el twig se mueve hacia la derecha y luego a la izquierda
 func estado_patrullar(delta):
 	animacion.speed_scale = 1.1
 	if(animacion.scale.x > 0):
@@ -59,10 +59,9 @@ func estado_patrullar(delta):
 	var _mover = move_and_collide(direccion * acceleracion * delta)
 	animacion.play('caminar')
 
-#el cangrejo ataca con la pinza
+#el twig ataca con la pinza
 func estado_atacar(delta):
 	if(objetivo):
-		animacion.speed_scale = 3
 		ultima_pos_x =  global_position.x
 		pos_objetivo =  objetivo.global_position
 		var direccion = global_position.direction_to(pos_objetivo)
@@ -71,20 +70,14 @@ func estado_atacar(delta):
 			animacion.play('atacar')
 		var _colision = move_and_collide(direccion * acceleracion * delta)
 
-# detecta si el cangrejo se esta moviendo a la derecha o a la izquierda
+# detecta si el twig se esta moviendo a la derecha o a la izquierda
 func calcular_direccion():
 	if(ultima_pos_x <= objetivo.global_position.x):
 		#derecha
 		animacion.scale.x = 1
 	else:
 		#izquierda
-		animacion.scale.x = -1
-
-func _on_cangrejo_ready():
-	randomize()
-	ultima_pos_x = global_position.x
-	orientacion = RNGTools.pick(orientaciones)
-	dano = danoClass.new()
+		animacion.scale.x = -1	
 	
 # cambia la direccion del patrullaje hacia la derecha o la izquierda
 func _on_Timer_timeout():
@@ -98,13 +91,11 @@ func _on_Timer_timeout():
 			else:
 				estado = 'espera'
 			
-# el cangrejo comienza a atacar
+# el twig comienza a atacar
 func _on_area_ataque_body_entered(body):
 	if(estado != 'muerto'):
 		if(body.name == 'personaje'):
 			estado = 'atacar'
-		else:
-			estado = 'espera'
 
 # el personaje sale del area de ataque pero aun es perseguido
 func _on_area_ataque_body_exited(body):
@@ -112,27 +103,21 @@ func _on_area_ataque_body_exited(body):
 		if(body.name == 'personaje'):
 			estado = 'alerta'
 
-# el cangrejo comienza a perseguir al jugador
+# el twig comienza a perseguir al jugador
 func _on_area_alerta_body_entered(body):
 	if(estado != 'muerto'):
 		if (body.name == "personaje"):
 			objetivo = body
 			estado = 'alerta'
 
-# el cangrejo deja de seguir al jugador 
-func _on_area_alerta_body_exited(body):
-	if(estado != 'muerto'):
-		if body.name == "personaje":
-			objetivo = null
-			estado = 'espera'
 
 # activa el hitbox durante la animacion de ataque
 func _on_animacion_frame_changed():
-	if(animacion.animation == 'atacar' && animacion.scale.x == 1 && animacion.frame == 2):
+	if(animacion.animation == 'atacar' && animacion.scale.x == 1 && animacion.frame == 4):
 		$pinzas/pinza_derecha.disabled = false
-	if(animacion.animation == 'atacar' && animacion.scale.x == -1 && animacion.frame == 2):
+	if(animacion.animation == 'atacar' && animacion.scale.x == -1 && animacion.frame == 4):
 		$pinzas/pinza_izquierda.disabled = false
-	if(animacion.animation == 'morir' && animacion.frame == 3):
+	if(animacion.animation == 'morir' && animacion.frame == 4):
 		animacion.stop() 
 
 # lastima al jugador
@@ -160,12 +145,11 @@ func verificar_vida():
 		animacion.play("morir")
 		yield(get_tree().create_timer(0.2), "timeout")
 		$particulas.emitting = true
-		yield(get_tree().create_timer(0.5), "timeout")
+		yield(get_tree().create_timer(0.2), "timeout")
 		animacion.visible = false
-		Globales.generar_botin(get_parent(),$particulas.global_position,'aleatorio')
 		$particulas.process_material.orbit_velocity = 0
 		$particulas.one_shot = true
-		yield(get_tree().create_timer(0.5), "timeout")
+		yield(get_tree().create_timer(0.2), "timeout")
 		self.queue_free()
 
 func manejar_dano(ataque_recibido, pos_enemigo):
@@ -177,5 +161,8 @@ func manejar_dano(ataque_recibido, pos_enemigo):
 	yield(get_tree().create_timer(0.5), "timeout")
 	manejando_dano = false
 	
-	
-	
+func _on_twig_ready():
+	randomize()
+	ultima_pos_x = global_position.x
+	orientacion = RNGTools.pick(orientaciones)
+	dano = danoClass.new()

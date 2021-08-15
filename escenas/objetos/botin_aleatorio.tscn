@@ -123,6 +123,7 @@ script = ExtResource( 4 )
 scale = Vector2( 0.6, 0.6 )
 frames = SubResource( 20 )
 animation = "moneda_roja"
+frame = 2
 playing = true
 
 [node name="colision" type="CollisionShape2D" parent="."]
