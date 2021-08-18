@@ -91,6 +91,7 @@ position = Vector2( 232.485, 200.933 )
 
 [node name="cofre" parent="." instance=ExtResource( 6 )]
 position = Vector2( 232.5, 168.646 )
+botin = "llave_calabozo"
 
 [node name="fogata" parent="." instance=ExtResource( 2 )]
 position = Vector2( 48.7904, 108.187 )

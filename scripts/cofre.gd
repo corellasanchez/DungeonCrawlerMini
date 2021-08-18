@@ -5,6 +5,7 @@ onready var colision_cofre = get_node("CollisionShape2D")
 
 export var estadoActual = "cofre_cerrado"
 onready var textura = get_node("textura")
+export(String, "llave", "llave_calabozo") var botin = 'llave'
 
 var estados = [
 	{"nombre": "cofre_cerrado", "frame": 0},
@@ -14,33 +15,36 @@ var estados = [
 	{"nombre": "barril_cerrado", "frame": 4},
 	{"nombre": "barril_abierto", "frame": 5},
 ]
-var bag = RNGTools.WeightedBag.new()
-
 
 func _ready():
-	bag.weights = {
-		A = 1,
-		B = 2,
-		C = 3
-	}
+	pass
 	
-
 # El jugador toca la cofre
 func _on_cofre_body_entered(_body):
-	print(RNGTools.pick_weighted(bag))
 	abrir_cofre()
 	
 func abrir_cofre():
 	
-	if (estadoActual == "cofre_cerrado"):
-		establecerEstado("cofre_abierto")
-		return
-	if (estadoActual == "cofre_fino_cerrado"):
-		establecerEstado("cofre_abierto")
-		return
-	if (estadoActual == "barril_cerrado"):
-		establecerEstado("cofre_abierto")
-		return 
+	if(estadoActual != "cofre_abierto" && estadoActual != "cofre_fino_abierto" && estadoActual != "barril_abierto" ):
+		if (estadoActual == "cofre_cerrado"):
+			establecerEstado("cofre_abierto")
+			
+		if (estadoActual == "cofre_fino_cerrado"):
+			establecerEstado("cofre_fino_abierto")
+			
+		if (estadoActual == "barril_cerrado"):
+			establecerEstado("barril_abierto")
+		
+		recoger_tesoro()
+	
+func recoger_tesoro():
+	$animacion.play("mostrar_tesoro")
+	if(botin == 'llave'):
+		$tesoro.frame = 0
+		Globales.llaves +=1
+	if(botin == 'llave_calabozo'):
+		$tesoro.frame = 1
+		Globales.llaves_calabozo += 1
 	
 # Establecer estado
 func establecerEstado(nombre: String):
