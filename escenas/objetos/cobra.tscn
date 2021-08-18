@@ -156,7 +156,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=33]
+[sub_resource type="CapsuleShape2D" id=41]
 radius = 34.3317
 height = 0.0
 
@@ -200,7 +200,7 @@ linear_accel_curve = SubResource( 39 )
 scale = 2.5
 color_ramp = SubResource( 37 )
 
-[sub_resource type="CapsuleShape2D" id=41]
+[sub_resource type="CapsuleShape2D" id=42]
 radius = 7.26034
 height = 8.57723
 
@@ -214,8 +214,8 @@ script = ExtResource( 1 )
 material = ExtResource( 3 )
 position = Vector2( 1.90735e-06, -0.198423 )
 frames = SubResource( 32 )
-animation = "atacar"
-frame = 1
+animation = "espera"
+frame = 3
 speed_scale = 1.1
 playing = true
 
@@ -225,7 +225,7 @@ collision_layer = 4
 [node name="colision" type="CollisionShape2D" parent="area_alerta"]
 position = Vector2( 7.62939e-06, 11.4384 )
 scale = Vector2( 1.5922, 1.05212 )
-shape = SubResource( 33 )
+shape = SubResource( 41 )
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0
@@ -266,7 +266,7 @@ process_material = SubResource( 40 )
 [node name="area_colision" type="CollisionShape2D" parent="."]
 position = Vector2( -0.280617, 9.12001 )
 rotation = 1.5708
-shape = SubResource( 41 )
+shape = SubResource( 42 )
 
 [connection signal="ready" from="." to="." method="_on_cangrejo_ready"]
 [connection signal="animation_finished" from="animacion" to="." method="_on_animacion_animation_finished"]
