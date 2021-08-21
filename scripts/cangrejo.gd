@@ -46,7 +46,7 @@ func estado_espera():
 	#print(val)
 	animacion.speed_scale = 1.1
 	animacion.play("espera")
-	yield(get_tree().create_timer(2.0), "timeout")
+	yield(get_tree().create_timer(1.0), "timeout")
 
 # el cangrejo se mueve hacia la derecha y luego a la izquierda
 func estado_patrullar(delta):
