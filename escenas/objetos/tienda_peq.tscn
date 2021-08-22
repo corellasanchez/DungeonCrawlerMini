@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/tiles/suelo.tres" type="TileSet" id=1]
+[ext_resource path="res://assets/tiles/props.tres" type="TileSet" id=2]
+[ext_resource path="res://assets/tiles/muros.tres" type="TileSet" id=3]
+[ext_resource path="res://escenas/npc/viejito.tscn" type="PackedScene" id=4]
+[ext_resource path="res://escenas/objetos/puerta.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/tiles/NPCs/rotulo_tienda.png" type="Texture" id=6]
+
+[node name="cuarto_peq" type="Node2D"]
+
+[node name="suelo" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 16 )
+cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
+show_collision = true
+collision_friction = 0.0
+collision_layer = 2
+format = 1
+tile_data = PoolIntArray( 65537, 168, 0, 65538, 168, 0, 65539, 168, 0, 65540, 163, 0, 65541, 168, 0, 131073, 168, 0, 131074, 168, 0, 131075, 168, 0, 131076, 168, 0, 131077, 168, 0, 196609, 168, 0, 196610, 168, 0, 196611, 168, 0, 196612, 168, 0, 196613, 168, 0, 262145, 168, 0, 262146, 168, 0, 262147, 168, 0, 262148, 168, 0, 262149, 168, 0, 327681, 168, 0, 327682, 168, 0, 327683, 168, 0, 327684, 168, 0, 327685, 168, 0, 393218, 168, 0, 393219, 168, 0, 393220, 168, 0 )
+
+[node name="props1" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 16, 16 )
+cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
+show_collision = true
+collision_layer = 2
+collision_mask = 5
+format = 1
+tile_data = PoolIntArray( 65541, 54, 0, 131073, 57, 0, 131077, 57, 0, 262145, 41, 0, 262146, 84, 0, 262149, 41, 0 )
+
+[node name="muros" type="TileMap" parent="."]
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 16, 16 )
+cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
+show_collision = true
+collision_friction = 0.0
+collision_layer = 2
+collision_mask = 5
+format = 1
+tile_data = PoolIntArray( -65535, 62, 0, -65531, 67, 0, 2, 4, 0, 3, 4, 0, 4, 4, 0, 131073, 48, 0, 131077, 49, 0, 196609, 48, 0, 196613, 49, 0, 262145, 8, 0, 262149, 9, 0, 327681, 36, 0, 327682, 4, 0, 327684, 4, 0, 327685, 37, 0 )
+
+[node name="viejito" parent="." instance=ExtResource( 4 )]
+position = Vector2( 54.0856, 50.6697 )
+
+[node name="props" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 16, 16 )
+cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
+show_collision = true
+collision_layer = 2
+collision_mask = 5
+format = 1
+tile_data = PoolIntArray( 65538, 44, 0, 65539, 44, 0, 65540, 44, 0, 131074, 78, 0, 131075, 74, 0, 131076, 62, 0, 262146, 84, 0 )
+
+[node name="puerta" parent="." instance=ExtResource( 5 )]
+position = Vector2( 55.8425, 105.438 )
+estadoPorDefecto = "cerrada"
+
+[node name="rotulo_tienda" type="Sprite" parent="."]
+position = Vector2( 33.8813, 103.987 )
+scale = Vector2( 0.544, 0.544 )
+texture = ExtResource( 6 )
