@@ -6,10 +6,9 @@ onready var colision_puerta = get_node("CollisionShape2D")
 # clase interactuable
 var claseInteractuable = preload("res://scripts/objetoInteractuable.gd")
 
-export var estadoPorDefecto = "puerta_bloqueada"
+export(String, "puerta_bloqueada", "cerrada", "abierta", "puerta_bloqueada_magicamente") var estadoPorDefecto = 'puerta_bloqueada'
+
 onready var textura = get_node("textura")
-signal mostrarMensaje
-signal ocultarMensaje
 
 # instancia interactuable
 var objetoInteractuable
@@ -39,22 +38,13 @@ func _on_puerta_body_entered(_body):
 				Globales.llaves -= 1
 				abrir_puerta()
 			else:
-				Globales.texto_dialogo = "puerta_bloqueada"
-				emit_signal("mostrarMensaje")
+				Globales.mostrar_mensaje("puerta_bloqueada")
 		if (objetoInteractuable.estadoActual == "puerta_bloqueada_magicamente"):
-			Globales.texto_dialogo = "puerta_bloqueada_magicamente"
-			emit_signal("mostrarMensaje")
-
+			Globales.mostrar_mensaje("puerta_bloqueada_magicamente")
 
 func _on_puerta_body_exited(_body):
 	if (objetoInteractuable.estadoActual == "puerta_bloqueada" || objetoInteractuable.estadoActual == "puerta_bloqueada_magicamente"):
-		emit_signal("ocultarMensaje")
-	Globales.vida -= 10
-	Globales.magia -= 10
-	Globales.monedas = 0
-	Globales.monedas = 10
-	#Globales.llaves += 1
-	#Globales.llaves_calabozo += 1
+		Globales.ocultar_mensaje()
 
 func abrir_puerta():
 	cerradura.set_deferred("disabled", true)

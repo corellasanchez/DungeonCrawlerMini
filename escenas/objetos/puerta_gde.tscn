@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/tiles/puertas/puerta_ancha.png" type="Texture" id=1]
+[ext_resource path="res://scripts/puerta_gde.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 15.9599, 0.987579 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 12.0265, 8.15423 )
+
+[node name="puerta_gde" type="Area2D"]
+position = Vector2( 0, -0.353554 )
+collision_layer = 2
+script = ExtResource( 2 )
+
+[node name="textura" type="Sprite" parent="."]
+position = Vector2( 0, -2.35355 )
+texture = ExtResource( 1 )
+hframes = 3
+frame = 1
+
+[node name="cerradura" type="StaticBody2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cerradura"]
+position = Vector2( 0.226379, -5.06111 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.373398, -2.12132 )
+shape = SubResource( 2 )
+
+[connection signal="body_entered" from="." to="." method="_on_puerta_gde_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_puerta_gde_body_exited"]

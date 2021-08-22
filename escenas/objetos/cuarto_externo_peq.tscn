@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/tiles/suelo.tres" type="TileSet" id=1]
+[ext_resource path="res://assets/tiles/props.tres" type="TileSet" id=2]
+[ext_resource path="res://assets/tiles/muros.tres" type="TileSet" id=3]
+
+[node name="cuarto_peq" type="Node2D"]
+
+[node name="suelo" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 16 )
+cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
+show_collision = true
+collision_friction = 0.0
+collision_layer = 2
+format = 1
+tile_data = PoolIntArray( 65537, 163, 0, 65538, 163, 0, 65539, 164, 0, 65540, 163, 0, 65541, 163, 0, 131073, 163, 0, 131074, 163, 0, 131075, 163, 0, 131076, 163, 0, 131077, 163, 0, 196609, 164, 0, 196610, 163, 0, 196611, 163, 0, 196612, 163, 0, 196613, 164, 0, 262145, 163, 0, 262146, 163, 0, 262147, 163, 0, 262148, 163, 0, 262149, 163, 0, 327681, 163, 0, 327682, 163, 0, 327683, 163, 0, 327684, 163, 0, 327685, 163, 0 )
+
+[node name="muros" type="TileMap" parent="."]
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 16, 16 )
+cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
+show_collision = true
+collision_friction = 0.0
+collision_layer = 2
+collision_mask = 5
+format = 1
+tile_data = PoolIntArray( 1, 0, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 2, 0, 131073, 6, 0, 131077, 7, 0, 196609, 6, 0, 196613, 7, 0, 262145, 10, 0, 262146, 11, 0, 262148, 11, 0, 262149, 12, 0 )
+
+[node name="props" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 16, 16 )
+cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
+show_collision = true
+collision_layer = 2
+collision_mask = 5
+format = 1
+tile_data = PoolIntArray( -65536, 0, 0, -65530, 0, 0, 65538, 86, 0, 65540, 86, 0, 131074, 24, 0, 131075, 16, 0, 131076, 26, 0, 196610, 18, 0, 196611, 19, 0, 196612, 20, 0, 262146, 32, 0, 262147, 33, 0, 262148, 34, 0, 327680, 0, 0, 327682, 86, 0, 327684, 86, 0, 327686, 1, 0 )
