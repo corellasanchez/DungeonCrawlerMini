@@ -88,14 +88,15 @@ collision_layer = 2
 collision_mask = 5
 format = 1
 
-[node name="cuarto_peq" parent="props" instance=ExtResource( 20 )]
-position = Vector2( 157.5, 494.875 )
-
 [node name="cuarto_peq" parent="." instance=ExtResource( 16 )]
-position = Vector2( 264.601, 48.7103 )
+position = Vector2( 855.044, 142.053 )
 
-[node name="puerta" parent="." instance=ExtResource( 3 )]
-position = Vector2( 320.586, 138.231 )
+[node name="cofre" parent="cuarto_peq" instance=ExtResource( 6 )]
+position = Vector2( 56.2909, 57.4283 )
+botin = "llave_calabozo"
+
+[node name="puerta" parent="cuarto_peq" instance=ExtResource( 3 )]
+position = Vector2( 55.9348, 88.6773 )
 
 [node name="cuarto_gde" parent="." instance=ExtResource( 17 )]
 position = Vector2( 505, 239 )
@@ -103,9 +104,8 @@ position = Vector2( 505, 239 )
 [node name="puerta_gde" parent="." instance=ExtResource( 18 )]
 position = Vector2( 569.284, 344.424 )
 
-[node name="cofre" parent="." instance=ExtResource( 6 )]
-position = Vector2( 320.42, 107.091 )
-botin = "llave_calabozo"
+[node name="tienda_peq" parent="." instance=ExtResource( 20 )]
+position = Vector2( 851.816, 476.002 )
 
 [node name="fogata" parent="." instance=ExtResource( 2 )]
 position = Vector2( 48.7904, 108.187 )
@@ -127,7 +127,7 @@ cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
 collision_layer = 2
 collision_mask = 5
 format = 1
-tile_data = PoolIntArray( -65517, 4, 0, -65499, 4, 0, 131075, 4, 0, 524293, 20, 0, 524294, 20, 0, 589829, 20, 0, 589830, 20, 0, 655365, 12, 0, 655366, 12, 0, 655367, 12, 0, 655386, 4, 0, 720901, 12, 0, 720902, 12, 0, 720903, 12, 0, 983041, 4, 0, 1703947, 536870915, 0 )
+tile_data = PoolIntArray( -65517, 4, 0, -65499, 4, 0, 131075, 4, 0, 524293, 20, 0, 524294, 20, 0, 589829, 20, 0, 589830, 20, 0, 655365, 12, 0, 655366, 12, 0, 655367, 12, 0, 655386, 4, 0, 720901, 12, 0, 720902, 12, 0, 720903, 12, 0, 983041, 4, 0 )
 
 [node name="personaje" parent="." instance=ExtResource( 4 )]
 position = Vector2( 340.645, 247.941 )
@@ -151,4 +151,4 @@ position = Vector2( 91.9899, 169.614 )
 [node name="arbusto6" parent="." instance=ExtResource( 15 )]
 position = Vector2( 108.98, 169.614 )
 
-[connection signal="body_exited" from="puerta" to="puerta" method="_on_puerta_body_exited"]
+[connection signal="body_exited" from="cuarto_peq/puerta" to="cuarto_peq/puerta" method="_on_puerta_body_exited"]

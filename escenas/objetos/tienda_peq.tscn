@@ -7,7 +7,7 @@
 [ext_resource path="res://escenas/objetos/puerta.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/tiles/NPCs/rotulo_tienda.png" type="Texture" id=6]
 
-[node name="cuarto_peq" type="Node2D"]
+[node name="tienda_peq" type="Node2D"]
 
 [node name="suelo" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )

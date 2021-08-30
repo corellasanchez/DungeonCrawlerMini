@@ -5,6 +5,7 @@
 [ext_resource path="res://assets/tiles/antorcha/2.png" type="Texture" id=3]
 
 [resource]
+flags = 2
 frames = 3
 frame_0/texture = ExtResource( 1 )
 frame_1/texture = ExtResource( 3 )
