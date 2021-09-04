@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/tiles/cajas/caja.png" type="Texture" id=1]
+[ext_resource path="res://scripts/caja.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 7.01562, 7.53125 )
+
+[node name="caja" type="KinematicBody2D" groups=[
+"empujable",
+]]
+script = ExtResource( 2 )
+
+[node name="textura" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+
+[node name="colision" type="CollisionShape2D" parent="."]
+position = Vector2( -0.484367, 0 )
+z_index = 1
+shape = SubResource( 1 )

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/llaves.png-68f4ded533af81a93533c71695a1236c.stex"
+path="res://.import/caja.png-c8923edd59b7c1022cd6d08d053f4f4f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/contadores/llaves.png"
-dest_files=[ "res://.import/llaves.png-68f4ded533af81a93533c71695a1236c.stex" ]
+source_file="res://assets/tiles/cajas/caja.png"
+dest_files=[ "res://.import/caja.png-c8923edd59b7c1022cd6d08d053f4f4f.stex" ]
 
 [params]
 

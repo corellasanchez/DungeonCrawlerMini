@@ -24,6 +24,20 @@ func _physics_process(delta):
 	else:
 		mover(eje * aceleracion * delta)
 	movimiento = move_and_slide(movimiento)
+	if get_slide_count() > 0:
+		verificar_colision_caja(eje,get_slide_collision(0).collider)
+
+func verificar_colision_caja(mov: Vector2, collider) -> void:
+	if abs(mov.x) + abs(mov.y) > 1:
+		return
+	if(collider.is_in_group("empujable")):
+		print(collider.name)
+		print('es empujable')
+		collider.empujar(mov)
+		
+#	var box : = get_slide_collision(0).collider as Box
+#	if box:
+#		box.push(push_speed * movimiento)
 
 func obtener_eje():
 	var eje = Vector2.ZERO
