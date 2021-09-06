@@ -9,6 +9,7 @@ extents = Vector2( 7.01562, 7.53125 )
 [node name="caja" type="KinematicBody2D" groups=[
 "empujable",
 ]]
+z_index = 1
 script = ExtResource( 2 )
 
 [node name="textura" type="Sprite" parent="."]
