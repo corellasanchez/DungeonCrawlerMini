@@ -3,7 +3,10 @@ extends Node2D
 var encendido = false
 export(int, 'false', 'true') var mantenerPresionado
 
+
+
 func _on_area_body_entered(body):
+	print('enter')
 	cambiarEstado(body)
 
 func _on_area_body_exited(body):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://assets/tiles/agua/agua.tres" type="Texture" id=1]
 [ext_resource path="res://escenas/objetos/fogata.tscn" type="PackedScene" id=2]
@@ -18,10 +18,8 @@
 [ext_resource path="res://escenas/objetos/cuarto_externo_peq.tscn" type="PackedScene" id=16]
 [ext_resource path="res://escenas/objetos/cuarto_externo_gde.tscn" type="PackedScene" id=17]
 [ext_resource path="res://escenas/objetos/puerta_gde.tscn" type="PackedScene" id=18]
-[ext_resource path="res://escenas/objetos/caja.tscn" type="PackedScene" id=19]
 [ext_resource path="res://escenas/objetos/tienda_peq.tscn" type="PackedScene" id=20]
-[ext_resource path="res://escenas/objetos/boton.tscn" type="PackedScene" id=21]
-[ext_resource path="res://escenas/objetos/antorcha_piedra.tscn" type="PackedScene" id=22]
+[ext_resource path="res://escenas/mapas/asertijo1.tscn" type="PackedScene" id=21]
 
 [sub_resource type="TileSet" id=1]
 0/name = "agua no colision"
@@ -155,16 +153,7 @@ position = Vector2( 91.9899, 169.614 )
 [node name="arbusto6" parent="." instance=ExtResource( 15 )]
 position = Vector2( 108.98, 169.614 )
 
-[node name="caja" parent="." instance=ExtResource( 19 )]
-position = Vector2( 251.852, 246.424 )
-
-[node name="caja2" parent="." instance=ExtResource( 19 )]
-position = Vector2( 274.901, 247.021 )
-
-[node name="boton" parent="." instance=ExtResource( 21 )]
-position = Vector2( 317.622, 227.819 )
-
-[node name="antorcha_piedra" parent="." instance=ExtResource( 22 )]
-position = Vector2( 294.314, 239.607 )
+[node name="asertijo1" parent="." instance=ExtResource( 21 )]
+position = Vector2( 233.415, 22.2725 )
 
 [connection signal="body_exited" from="cuarto_peq/puerta" to="cuarto_peq/puerta" method="_on_puerta_body_exited"]
