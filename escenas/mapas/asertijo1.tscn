@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scripts/asertijo1.gd" type="Script" id=1]
 [ext_resource path="res://escenas/objetos/cuarto_externo_gde_largo.tscn" type="PackedScene" id=2]
 [ext_resource path="res://escenas/objetos/antorcha_piedra.tscn" type="PackedScene" id=3]
 [ext_resource path="res://escenas/objetos/boton.tscn" type="PackedScene" id=4]
 [ext_resource path="res://escenas/objetos/caja.tscn" type="PackedScene" id=5]
+[ext_resource path="res://escenas/objetos/cofre.tscn" type="PackedScene" id=6]
 
 [node name="asertijo1" type="Node2D"]
 script = ExtResource( 1 )
@@ -44,13 +45,10 @@ position = Vector2( 117.704, 130.997 )
 scale = Vector2( 0.7, 0.7 )
 
 [node name="cajaBL" parent="." instance=ExtResource( 5 )]
-position = Vector2( 48.6169, 130.997 )
-
-[node name="cajaBR" parent="." instance=ExtResource( 5 )]
-position = Vector2( 133.534, 130.997 )
+position = Vector2( 58.5205, 130.997 )
 
 [node name="cajaTL" parent="." instance=ExtResource( 5 )]
-position = Vector2( 58.5205, 75.9346 )
+position = Vector2( 37.3073, 62.2215 )
 
 [node name="cajaTR" parent="." instance=ExtResource( 5 )]
 position = Vector2( 117.704, 75.9346 )
@@ -58,3 +56,8 @@ position = Vector2( 117.704, 75.9346 )
 [node name="botonReset" parent="." instance=ExtResource( 4 )]
 position = Vector2( 142.697, 57.7415 )
 scale = Vector2( 0.7, 0.7 )
+color = "rojo"
+
+[node name="cofre" parent="." instance=ExtResource( 6 )]
+position = Vector2( 88.2499, 104.057 )
+botin = "llave_calabozo"

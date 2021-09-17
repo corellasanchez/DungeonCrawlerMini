@@ -3,7 +3,8 @@ extends Area2D
 onready var cerradura = get_node("cerradura/CollisionShape2D")
 onready var colision_cofre = get_node("CollisionShape2D")
 
-export var estadoActual = "cofre_cerrado"
+export(String, "cofre_cerrado", "cofre_abierto","cofre_fino_cerrado", "cofre_fino_abierto", "barril_cerrado", "barril_abierto" ) var estadoActual = "cofre_cerrado"
+
 onready var textura = get_node("textura")
 export(String, "llave", "llave_calabozo") var botin = 'llave'
 
@@ -17,14 +18,13 @@ var estados = [
 ]
 
 func _ready():
-	pass
+	establecerEstado(estadoActual)
 	
 # El jugador toca la cofre
 func _on_cofre_body_entered(_body):
 	abrir_cofre()
 	
 func abrir_cofre():
-	
 	if(estadoActual != "cofre_abierto" && estadoActual != "cofre_fino_abierto" && estadoActual != "barril_abierto" ):
 		if (estadoActual == "cofre_cerrado"):
 			establecerEstado("cofre_abierto")

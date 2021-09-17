@@ -5,14 +5,13 @@ var verificandoAntorchas = false
 var cajaTLpos = Vector2()
 var cajaTRpos = Vector2()
 var cajaBLpos = Vector2()
-var cajaBRpos = Vector2()
+
 
 func _ready():
 	cajaTLpos = $cajaTL.global_position
 	cajaTRpos = $cajaTR.global_position
 	cajaBLpos = $cajaBL.global_position
-	cajaBRpos = $cajaBR.global_position
-
+	
 func _process(_delta):
 	if (!verificandoAntorchas && !acertijoResuelto):
 		verificarAntorchas()
@@ -42,8 +41,7 @@ func verificarAcertijo(a1,a2,a3,a4):
 func resetearCajas():
 	$cajaTL.global_position = cajaTLpos 
 	$cajaTR.global_position = cajaTRpos  
-	$cajaBL.global_position = cajaBLpos  
-	$cajaBR.global_position = cajaBRpos 
+	$cajaBL.global_position = cajaBLpos
 	
 	
 	

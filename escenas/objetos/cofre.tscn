@@ -90,6 +90,7 @@ tracks/2/keys = {
 position = Vector2( 0, -0.353554 )
 collision_layer = 2
 script = ExtResource( 1 )
+estadoActual = "cofre_fino_cerrado"
 
 [node name="particulas" type="Particles2D" parent="."]
 modulate = Color( 0, 0.635294, 1, 1 )
