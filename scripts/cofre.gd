@@ -52,4 +52,10 @@ func establecerEstado(nombre: String):
 		if(estados[i].nombre == nombre):
 			estadoActual = estados[i].nombre
 			textura.frame = estados[i].frame
+
+func mostrarCofre(mostrar):
+	visible = mostrar
+	$cerradura/CollisionShape2D.disabled = !mostrar
+	$CollisionShape2D.disabled = !mostrar
+	
 	

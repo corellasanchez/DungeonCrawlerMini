@@ -6,11 +6,11 @@ var cajaTLpos = Vector2()
 var cajaTRpos = Vector2()
 var cajaBLpos = Vector2()
 
-
 func _ready():
 	cajaTLpos = $cajaTL.global_position
 	cajaTRpos = $cajaTR.global_position
 	cajaBLpos = $cajaBL.global_position
+	$cofre.mostrarCofre(false)
 	
 func _process(_delta):
 	if (!verificandoAntorchas && !acertijoResuelto):
@@ -29,7 +29,8 @@ func verificarAntorchas():
 	verificarAntorcha($antorcha_piedraBL,$botonBL)
 	verificarAntorcha($antorcha_piedraBR,$botonBR)
 	acertijoResuelto = verificarAcertijo($antorcha_piedraTL,$antorcha_piedraTR, $antorcha_piedraBL,$antorcha_piedraBR)
-	print(acertijoResuelto);
+	if(acertijoResuelto):
+		mostrarTesoro()
 	if($botonReset.encendido):
 		resetearCajas()
 	yield(get_tree().create_timer(0.3), "timeout")
@@ -42,6 +43,7 @@ func resetearCajas():
 	$cajaTL.global_position = cajaTLpos 
 	$cajaTR.global_position = cajaTRpos  
 	$cajaBL.global_position = cajaBLpos
-	
-	
-	
+
+func mostrarTesoro():
+	$cofre.mostrarCofre(true);
+	$botonReset.queue_free()

@@ -18,7 +18,7 @@ func _ready():
 	ataque = 10
 	cristales = 10
 	idioma= 'es'
-	llaves = 1
+	llaves = 0
 	llaves_calabozo = 0
 	magia = 100
 	magia_max = 100

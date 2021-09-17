@@ -8,10 +8,8 @@ export(String, 'verde', 'rojo') var color = 'verde'
 func _ready():
 	if(color == 'rojo'):
 		$textura.modulate = Color(1, 0.1, 0.1)
-	
 
 func _on_area_body_entered(body):
-	print('enter')
 	cambiarEstado(body)
 
 func _on_area_body_exited(body):

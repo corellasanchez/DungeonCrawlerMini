@@ -94,17 +94,17 @@ position = Vector2( 855.044, 142.053 )
 
 [node name="cofre" parent="cuarto_peq" instance=ExtResource( 6 )]
 position = Vector2( 56.2909, 57.4283 )
-botin = "llave_calabozo"
+estadoActual = "cofre_cerrado"
 
 [node name="puerta" parent="cuarto_peq" instance=ExtResource( 3 )]
 position = Vector2( 55.9348, 88.6773 )
+estadoPorDefecto = "cerrada"
 
 [node name="cuarto_gde" parent="." instance=ExtResource( 17 )]
 position = Vector2( 505, 239 )
 
 [node name="puerta_gde" parent="." instance=ExtResource( 18 )]
 position = Vector2( 569.284, 344.424 )
-scale = Vector2( 0.5, 0.5 )
 
 [node name="tienda_peq" parent="." instance=ExtResource( 20 )]
 position = Vector2( 851.816, 476.002 )
