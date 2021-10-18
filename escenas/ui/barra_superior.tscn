@@ -12,9 +12,10 @@
 
 [node name="Control" type="Control" parent="."]
 anchor_right = 1.0
-margin_left = 0.561234
-margin_right = 0.561218
-margin_bottom = 15.0
+margin_left = 72.6047
+margin_top = 1.58917
+margin_right = 72.6047
+margin_bottom = 16.5892
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -136,7 +136,7 @@ position = Vector2( 340.645, 247.941 )
 z_as_relative = false
 
 [node name="ui_principal" parent="." instance=ExtResource( 5 )]
-position = Vector2( 6.36032, 14.3296 )
+position = Vector2( 6.92154, 13.7684 )
 
 [node name="arbusto2" parent="." instance=ExtResource( 15 )]
 position = Vector2( 108.508, 139.41 )
